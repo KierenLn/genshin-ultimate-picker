@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Furina",
+        "element": "Hydro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Venti",
+        "element": "Anemo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Nahida",
+        "element": "Dendro",
+        "weapon": "Catalyst"
+    }
+]
