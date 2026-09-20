@@ -1,8 +1,493 @@
 [
     {
+        "name": "Aino",
+        "element": "Hydro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Albedo",
+        "element": "Geo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Alhaitam",
+        "element": "Dendro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Aloy",
+        "element": "Cryo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Alyosha",
+        "element": "Electro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Amber",
+        "element": "Pyro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Arataki_Itto",
+        "element": "Geo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Arlecchino",
+        "element": "Pyro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Baizhu",
+        "element": "Dendro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Barbara",
+        "element": "Hydro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Beidou",
+        "element": "Electro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Bennett",
+        "element": "Pyro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Candace",
+        "element": "Hydro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Charlotte",
+        "element": "Cryo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Chasca",
+        "element": "Anemo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Chevreuse",
+        "element": "Pyro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Chongyun",
+        "element": "Cryo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Citlali",
+        "element": "Cryo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Clorinde",
+        "element": "Electro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Collei",
+        "element": "Dendro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Columbina",
+        "element": "Hydro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Cyno",
+        "element": "Electro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Dahlia",
+        "element": "Hydro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Dehya",
+        "element": "Pyro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Diluc",
+        "element": "Pyro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Diona",
+        "element": "Cryo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Dori",
+        "element": "Electro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Durin",
+        "element": "Pyro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Emilie",
+        "element": "Dendro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Escoffier",
+        "element": "Cryo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Eula",
+        "element": "Cryo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Faruzan",
+        "element": "Anemo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Fischl",
+        "element": "Electro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Flins",
+        "element": "Electro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Freminet",
+        "element": "Cryo",
+        "weapon": "Claymore"
+    },
+    {
         "name": "Furina",
         "element": "Hydro",
         "weapon": "Sword"
+    },
+    {
+        "name": "Gaming",
+        "element": "Pyro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Ganyu",
+        "element": "Cryo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Gorou",
+        "element": "Geo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Hu Tao",
+        "element": "Pyro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Iansan",
+        "element": "Electro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Ifa",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Illuga",
+        "element": "Geo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Ineffa",
+        "element": "Electro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Jahoda",
+        "element": "Anemo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Jean",
+        "element": "Anemo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Kachina",
+        "element": "Geo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Kaedehara_Kazuha",
+        "element": "Anemo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Kaeya",
+        "element": "Cryo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Kamisato_Ayaka",
+        "element": "Cryo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Kamisato_Ayato",
+        "element": "Hydro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Kaveh",
+        "element": "Dendro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Keqing",
+        "element": "Electro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Kinich",
+        "element": "Dendro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Kirara",
+        "element": "Dendro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Klee",
+        "element": "Pyro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Kujou_Sara",
+        "element": "Electro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Kuki_Shinobu",
+        "element": "Electro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Lan Yan",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Lauma",
+        "element": "Dendro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Layla",
+        "element": "Cryo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Linnea",
+        "element": "Geo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Lisa",
+        "element": "Electro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Lohen",
+        "element": "Cryo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Lynette",
+        "element": "Anemo",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Lyney",
+        "element": "Pyro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Mavuika",
+        "element": "Pyro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Mika",
+        "element": "Cryo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Mona",
+        "element": "Hydro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Mualani",
+        "element": "Hydro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Nahida",
+        "element": "Dendro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Navia",
+        "element": "Geo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Nefer",
+        "element": "Dendro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Neuvillette",
+        "element": "Hydro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Nicole",
+        "element": "Pyro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Nilou",
+        "element": "Hydro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Ningguang",
+        "element": "Geo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Noelle",
+        "element": "Geo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Odette",
+        "element": "Cryo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Ororon",
+        "element": "Electro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Prune",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Qiqi",
+        "element": "Cryo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Raiden_Shogun",
+        "element": "Electro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Razor",
+        "element": "Electro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Rosaria",
+        "element": "Cryo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Sandrone",
+        "element": "Cryo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Sangonomiya_Kokomi",
+        "element": "Hydro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Sayu",
+        "element": "Anemo",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Sethos",
+        "element": "Electro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Shikanoin_Heizou",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Sigewinne",
+        "element": "Hydro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Skirk",
+        "element": "Cryo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Sucrose",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Tartaglia",
+        "element": "Hydro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Thoma",
+        "element": "Pyro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Tighnari",
+        "element": "Dendro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Varesa",
+        "element": "Electro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Varka",
+        "element": "Anemo",
+        "weapon": "Claymore"
     },
     {
         "name": "Venti",
@@ -10,8 +495,98 @@
         "weapon": "Bow"
     },
     {
-        "name": "Nahida",
-        "element": "Dendro",
+        "name": "Vesna",
+        "element": "Anemo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Vodyanitsa",
+        "element": "Hydro",
         "weapon": "Catalyst"
-    }
+    },
+    {
+        "name": "Wanderer",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Wriothesley",
+        "element": "Cryo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Xiangling",
+        "element": "Pyro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Xianyun",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Xiao",
+        "element": "Anemo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Xilonen",
+        "element": "Geo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Xingqiu",
+        "element": "Hydro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Xinyan",
+        "element": "Pyro",
+        "weapon": "Claymore"
+    },
+    {
+        "name": "Yae Miko",
+        "element": "Electro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Yanfei",
+        "element": "Pyro",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Yaoyao",
+        "element": "Dendro",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Yelan",
+        "element": "Hydro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Yoimiya",
+        "element": "Pyro",
+        "weapon": "Bow"
+    },
+    {
+        "name": "Yumemizuki Mizuki",
+        "element": "Anemo",
+        "weapon": "Catalyst"
+    },
+    {
+        "name": "Yun Jin",
+        "element": "Geo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Zhongli",
+        "element": "Geo",
+        "weapon": "Polearm"
+    },
+    {
+        "name": "Zibai",
+        "element": "Geo",
+        "weapon": "Sword"
+    }    
 ]
