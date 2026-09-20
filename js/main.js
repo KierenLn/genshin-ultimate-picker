@@ -6,7 +6,7 @@ const modalTitle = document.getElementById("modal-title");
 const characterList = document.getElementById("character-list");
 const closeModalButton = document.getElementById("close-modal");
 
-var selectedCell = null;
+let selectedCell = null;
 
 //VAR POUR LA GRID
 const elements = [
@@ -30,20 +30,22 @@ const weapons = [
 ];
 
 //RECUPERATION DES DONNEES DES PERSONNAGES
-var characters = [];
+let characters = [];
 async function loadCharacters() {
     const response = await fetch("./data/characters.json");
     characters = await response.json();
 }
 
 
-var selectedCharacters = [];
+let selectedCharacters = [];
+let favSelectedCharacters= [];
 
 
 function createGrid() {
     //1ERE CASE
     const first_cell = document.createElement("div");
-    first_cell.classList.add("cell");
+    first_cell.classList.add("cell", "first-cell");
+    first_cell.textContent = "Pick your Favorites !";
     grid.appendChild(first_cell);
 
     //LIGNE DES ARMES
@@ -69,32 +71,33 @@ function createGrid() {
 
     
     for (const element of elements) {
-    //1ERE CASE ELEMENT
-    const rowHeader = document.createElement("div");
+        //1ERE CASE ELEMENT
+        const rowHeader = document.createElement("div");
 
-    rowHeader.classList.add("cell", "header");
-    const rowHeaderImg = document.createElement("img");
-    rowHeaderImg.classList.add("row-header-img");
-    rowHeaderImg.alt = element;
-    rowHeaderImg.src = `./img/Icon_Element/Element_${element}.png`;
-    if(element === "Favorite") {
-        rowHeaderImg.src = `./img/Icon_Favorite.png`;
-    };
-    rowHeader.appendChild(rowHeaderImg);
-    //rowHeader.textContent = element;
+        rowHeader.classList.add("cell", "header");
+        const rowHeaderImg = document.createElement("img");
+        rowHeaderImg.classList.add("row-header-img");
+        rowHeaderImg.alt = element;
+        rowHeaderImg.src = `./img/Icon_Element/Element_${element}.png`;
+        if(element === "Favorite") {
+            rowHeaderImg.src = `./img/Icon_Favorite.png`;
+        };
+        rowHeader.appendChild(rowHeaderImg);
+        //rowHeader.textContent = element;
 
-    grid.appendChild(rowHeader);
+        grid.appendChild(rowHeader);
     
-    //BOUCLE POUR AJOUTER UNE CASE PAR TYPE D'ARME POUR CHAQUE ELEMENT
-    for (const weapon of weapons) {
-        const cell = document.createElement("div");
+        //BOUCLE POUR AJOUTER UNE CASE PAR TYPE D'ARME POUR CHAQUE ELEMENT
+        for (const weapon of weapons) {
+            const cell = document.createElement("div");
 
 
-        cell.classList.add("cell");
-        cell.dataset.element = element;
-        cell.dataset.weapon = weapon;
+            cell.classList.add("cell");
+            cell.dataset.element = element;
+            cell.dataset.weapon = weapon;
+            cell.selectedCharacter = null;
 
-        //EVENT QUAND ON CLIQUE SUR UNE CASE : OUVERTURE DE LA FENETRE MODALE AVEC LES PERSOS CORRESPONDANTS
+            //EVENT QUAND ON CLIQUE SUR UNE CASE : OUVERTURE DE LA FENETRE MODALE AVEC LES PERSOS CORRESPONDANTS
         cell.addEventListener("click", () => {
             const element = cell.dataset.element;
             const weapon = cell.dataset.weapon;
@@ -107,6 +110,7 @@ function createGrid() {
                 )
             });
 
+            //SI ON CHOISIT LE PERSO FAVORI POUR L'ELEMENT, ON REGARDE TOUS LES PERSOS DE CET ELEMENT SELECTIONNES DANS CHAQUE TYPE D'ARME
             if(element === "Favorite") {
             
                 matchingChar = characters.filter(character => {
@@ -116,6 +120,7 @@ function createGrid() {
                 });
             };
 
+            //SI ON CHOISIT LE PERSO FAVORI POUR L'ARME, ON REGARDE TOUS LES PERSOS DE CET ARME SELECTIONNES DANS CHAQUE ELEMENT
             if(weapon === "Favorite") {
                 matchingChar = characters.filter(character => {
                     return(character.element === element &&
@@ -124,9 +129,9 @@ function createGrid() {
                 });
             };
 
-
+            //SI ON CHOISIT LE PERSO FAVORI, ON REGARDE TOUS LES PERSOS SELECTIONNES DANS LES FAVORIS
             if(element === "Favorite" && weapon === "Favorite") {
-                matchingChar = selectedCharacters;
+                matchingChar = favSelectedCharacters;
             };
 
 
@@ -170,6 +175,13 @@ function openSelectionModal(element, weapon, matchingCharacters) {
             if(previousContent !== null)
                 previousContent.remove();
 
+            const previousCharacter = selectedCell.selectedCharacter;
+            if (previousCharacter !== null) {
+                selectedCharacters = selectedCharacters.filter(
+                    character => character !== previousCharacter
+                );
+            };
+
             //ON CREE UN NOUVEAU DIV POUR LE PERSONNAGE SELECTIONNE ET ON L'AJOUTE DANS LA CASE
             const cellContent = document.createElement("div");
             cellContent.classList.add("cell-content");
@@ -181,14 +193,28 @@ function openSelectionModal(element, weapon, matchingCharacters) {
             //cellContent.textContent = character.name;
 
             selectedCell.appendChild(cellContent);
+            selectedCell.selectedCharacter = character;
+
+            console.log(selectedCell.selectedCharacter);
 
             selectedCell = null;
 
             //ON FERME LA FENETRE
             closeSelectionModal();
+
+
             
             if(!selectedCharacters.includes(character))
                 selectedCharacters.push(character);
+
+
+            if(element === "Favorite" || weapon === "Favorite") {
+                               
+
+                if(!favSelectedCharacters.includes(character))
+                    favSelectedCharacters.push(character);
+             }
+
         })
 
         characterList.appendChild(option);

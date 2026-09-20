@@ -10,7 +10,7 @@
         "weapon": "Sword"
     },
     {
-        "name": "Alhaitam",
+        "name": "Alhaitham",
         "element": "Dendro",
         "weapon": "Sword"
     },
@@ -30,7 +30,7 @@
         "weapon": "Bow"
     },
     {
-        "name": "Arataki_Itto",
+        "name": "Arataki Itto",
         "element": "Geo",
         "weapon": "Claymore"
     },
@@ -235,7 +235,7 @@
         "weapon": "Polearm"
     },
     {
-        "name": "Kaedehara_Kazuha",
+        "name": "Kaedehara Kazuha",
         "element": "Anemo",
         "weapon": "Sword"
     },
@@ -245,12 +245,12 @@
         "weapon": "Sword"
     },
     {
-        "name": "Kamisato_Ayaka",
+        "name": "Kamisato Ayaka",
         "element": "Cryo",
         "weapon": "Sword"
     },
     {
-        "name": "Kamisato_Ayato",
+        "name": "Kamisato Ayato",
         "element": "Hydro",
         "weapon": "Sword"
     },
@@ -280,12 +280,12 @@
         "weapon": "Catalyst"
     },
     {
-        "name": "Kujou_Sara",
+        "name": "Kujou Sara",
         "element": "Electro",
         "weapon": "Bow"
     },
     {
-        "name": "Kuki_Shinobu",
+        "name": "Kuki Shinobu",
         "element": "Electro",
         "weapon": "Sword"
     },
@@ -410,7 +410,7 @@
         "weapon": "Sword"
     },
     {
-        "name": "Raiden_Shogun",
+        "name": "Raiden Shogun",
         "element": "Electro",
         "weapon": "Polearm"
     },
@@ -430,7 +430,7 @@
         "weapon": "Claymore"
     },
     {
-        "name": "Sangonomiya_Kokomi",
+        "name": "Sangonomiya Kokomi",
         "element": "Hydro",
         "weapon": "Catalyst"
     },
@@ -445,7 +445,7 @@
         "weapon": "Bow"
     },
     {
-        "name": "Shikanoin_Heizou",
+        "name": "Shikanoin Heizou",
         "element": "Anemo",
         "weapon": "Catalyst"
     },

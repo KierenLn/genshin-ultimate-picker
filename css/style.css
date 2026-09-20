@@ -1,7 +1,27 @@
+@font-face {
+    font-family: 'Genshin';
+    src: url('./font/zhcn.ttf');
+}
+
+html {
+    font-family: 'Genshin', sans-serif;
+}
+
+
+
 #main-grid{
     display: grid;
     grid-template-columns: 160px repeat(6, 160px);
     gap: 4px;
+}
+
+.header-img {
+    max-width: 128px;
+}
+
+.row-header-img {
+    max-width: 128px;
+    min-height: 128px;
 }
 
 .cell {
@@ -11,6 +31,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.first-cell {
+    background-color: #1b1b1b;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+
 }
 
 .cell-img {
@@ -45,6 +74,34 @@
     border-radius: 10px;
 }
 
+.option-pyro-bg{
+    background-color: #ff8359;
+}
+
+.option-hydro-bg{
+    background-color: #3b7fff;
+}
+
+.option-dendro-bg{
+    background-color: #63db73;
+}
+
+.option-electro-bg{
+    background-color: #b07ec4;
+}
+
+.option-anemo-bg{
+    background-color: #6fe8ba;
+}
+
+.option-cryo-bg{
+    background-color: #75e0e6;
+}
+
+.option-geo-bg{
+    background-color: #e6e165;
+}
+
 .close-button {
     position: absolute;
     top: 10px;
@@ -74,8 +131,9 @@
 }
 
 .option-img {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 128px;
+    max-height: 128px;
+    
 }
 
 .character-option:hover {
