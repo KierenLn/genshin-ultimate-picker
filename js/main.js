@@ -37,8 +37,52 @@ async function loadCharacters() {
 }
 
 
-let selectedCharacters = [];
-let favSelectedCharacters= [];
+function getSelectedCharacters() { 
+    const selectedCharacters = [];
+
+    const cells = grid.querySelectorAll(".cell");
+    for (const cell of cells) {
+
+        //ON SKIP LES FAVORIS
+        if(cell.dataset.element === "Favorite" || cell.dataset.weapon === "Favorite") { 
+            continue; 
+        }
+
+        //SI LA CASE CONTIENT UN PERSO, ON L'AJOUTE
+        if (cell.selectedCharacter && !selectedCharacters.includes(cell.selectedCharacter)) {
+            selectedCharacters.push(cell.selectedCharacter);
+        }
+    }
+
+    
+    return selectedCharacters;
+}
+
+function getFavoriteCharacters() {
+    const favoriteCharacters = [];
+
+    const cells = grid.querySelectorAll(".cell");
+    
+    for (const cell of cells) {
+        //ON IGNORE CE QUI N'EST PAS EN FAVORI
+        if (cell.dataset.element !== "Favorite" && cell.dataset.weapon !== "Favorite") {
+            continue;
+        }
+
+        //ON IGNORE LA DERNIERE CASE DE FAVORI
+        if (cell.dataset.element === "Favorite" && cell.dataset.weapon === "Favorite") {
+            continue;
+        }
+
+        if (cell.selectedCharacter && !favoriteCharacters.includes(cell.selectedCharacter)) {
+            favoriteCharacters.push(cell.selectedCharacter);
+        }
+    }
+
+    return favoriteCharacters;
+}
+
+
 
 
 function createGrid() {
@@ -64,7 +108,6 @@ function createGrid() {
         };
 
         header.appendChild(headerImg);
-        //header.textContent = weapon;
 
         grid.appendChild(header);
     }
@@ -83,7 +126,6 @@ function createGrid() {
             rowHeaderImg.src = `./img/Icon_Favorite.png`;
         };
         rowHeader.appendChild(rowHeaderImg);
-        //rowHeader.textContent = element;
 
         grid.appendChild(rowHeader);
     
@@ -98,52 +140,50 @@ function createGrid() {
             cell.selectedCharacter = null;
 
             //EVENT QUAND ON CLIQUE SUR UNE CASE : OUVERTURE DE LA FENETRE MODALE AVEC LES PERSOS CORRESPONDANTS
-        cell.addEventListener("click", () => {
-            const element = cell.dataset.element;
-            const weapon = cell.dataset.weapon;
+            cell.addEventListener("click", () => {
+                const element = cell.dataset.element;
+                const weapon = cell.dataset.weapon;
 
-            selectedCell = cell;
+                selectedCell = cell;
 
-            var matchingChar = characters.filter(character => {
-                return(character.element === element &&
-                    character.weapon === weapon
-                )
+                let matchingChar = characters.filter(character => {
+                    return(character.element === element &&
+                        character.weapon === weapon
+                    )
+                });
+
+
+                //PERSOS DEJA SELECTIONNES
+                const selectedCharacters = getSelectedCharacters();
+
+                if(element === "Favorite") { 
+                    matchingChar = selectedCharacters.filter(character => {
+                        return character.weapon === weapon;
+                    });
+                }
+
+                if(weapon === "Favorite") {
+                    matchingChar = selectedCharacters.filter(character => {
+                        return character.element === element;
+                    }); 
+                }
+
+                if(element === "Favorite" && weapon === "Favorite") {
+                    matchingChar = getFavoriteCharacters();
+                }
+
+        
+
+
+                openSelectionModal(
+                    element,
+                    weapon,
+                    matchingChar
+                );
             });
 
-            //SI ON CHOISIT LE PERSO FAVORI POUR L'ELEMENT, ON REGARDE TOUS LES PERSOS DE CET ELEMENT SELECTIONNES DANS CHAQUE TYPE D'ARME
-            if(element === "Favorite") {
-            
-                matchingChar = characters.filter(character => {
-                    return(character.weapon === weapon &&
-                        selectedCharacters.includes(character)
-                    );
-                });
-            };
-
-            //SI ON CHOISIT LE PERSO FAVORI POUR L'ARME, ON REGARDE TOUS LES PERSOS DE CET ARME SELECTIONNES DANS CHAQUE ELEMENT
-            if(weapon === "Favorite") {
-                matchingChar = characters.filter(character => {
-                    return(character.element === element &&
-                        selectedCharacters.includes(character)
-                    );
-                });
-            };
-
-            //SI ON CHOISIT LE PERSO FAVORI, ON REGARDE TOUS LES PERSOS SELECTIONNES DANS LES FAVORIS
-            if(element === "Favorite" && weapon === "Favorite") {
-                matchingChar = favSelectedCharacters;
-            };
-
-
-            openSelectionModal(
-                element,
-                weapon,
-                matchingChar
-            );
-        });
-
-        grid.appendChild(cell);
-    }
+            grid.appendChild(cell);
+        }
 }
 
 }
@@ -159,14 +199,16 @@ function openSelectionModal(element, weapon, matchingCharacters) {
     //ON CREE UN ELEMENT POUR CHAQUE PERSONNAGE CORRESPONDANT A L'ELEMENT ET A L'ARME
     for (const character of matchingCharacters) {
         const option = document.createElement("div");
+
         const optionImg = document.createElement("img");
         optionImg.classList.add("option-img");
         optionImg.alt = character.name;
         optionImg.src = `./img/Characters/${character.name}_Icon.png`;
+
         option.appendChild(optionImg);
 
         option.classList.add("character-option");
-        //option.textContent = character.name;
+        
 
         option.addEventListener("click", () => {
             //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
@@ -175,45 +217,27 @@ function openSelectionModal(element, weapon, matchingCharacters) {
             if(previousContent !== null)
                 previousContent.remove();
 
-            const previousCharacter = selectedCell.selectedCharacter;
-            if (previousCharacter !== null) {
-                selectedCharacters = selectedCharacters.filter(
-                    character => character !== previousCharacter
-                );
-            };
+            
 
             //ON CREE UN NOUVEAU DIV POUR LE PERSONNAGE SELECTIONNE ET ON L'AJOUTE DANS LA CASE
             const cellContent = document.createElement("div");
             cellContent.classList.add("cell-content");
+
             const cellImg = document.createElement("img");
             cellImg.classList.add("cell-img");
             cellImg.alt = character.name;
             cellImg.src = `./img/Characters/${character.name}_Icon.png`;
+
             cellContent.appendChild(cellImg);
-            //cellContent.textContent = character.name;
+            
 
             selectedCell.appendChild(cellContent);
             selectedCell.selectedCharacter = character;
-
-            console.log(selectedCell.selectedCharacter);
 
             selectedCell = null;
 
             //ON FERME LA FENETRE
             closeSelectionModal();
-
-
-            
-            if(!selectedCharacters.includes(character))
-                selectedCharacters.push(character);
-
-
-            if(element === "Favorite" || weapon === "Favorite") {
-                               
-
-                if(!favSelectedCharacters.includes(character))
-                    favSelectedCharacters.push(character);
-             }
 
         })
 
@@ -221,7 +245,6 @@ function openSelectionModal(element, weapon, matchingCharacters) {
     }
 
     modal.classList.remove("hidden");
-    //modal.addEventListener("click", closeSelectionModal);
 }
 
 //FERME LA FENETRE DE SELECTION
