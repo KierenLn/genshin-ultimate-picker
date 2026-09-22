@@ -2,17 +2,20 @@
     {
         "name": "Aino",
         "element": "Hydro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Nod Krai"
     },
     {
         "name": "Albedo",
         "element": "Geo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Mondstadt"
     },
     {
         "name": "Alhaitham",
         "element": "Dendro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Sumeru"
     },
     {
         "name": "Aloy",
@@ -22,571 +25,685 @@
     {
         "name": "Alyosha",
         "element": "Electro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Snezhnaya"
     },
     {
         "name": "Amber",
         "element": "Pyro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Mondstadt"
     },
     {
         "name": "Arataki Itto",
         "element": "Geo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Inazuma"
     },
     {
         "name": "Arlecchino",
         "element": "Pyro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Fontaine"
     },
     {
         "name": "Baizhu",
         "element": "Dendro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Liyue"
     },
     {
         "name": "Barbara",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Beidou",
         "element": "Electro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Liyue"
     },
     {
         "name": "Bennett",
         "element": "Pyro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Mondstadt"
     },
     {
         "name": "Candace",
         "element": "Hydro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Sumeru"
     },
     {
         "name": "Charlotte",
         "element": "Cryo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Fontaine"
     },
     {
         "name": "Chasca",
         "element": "Anemo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Natlan"
     },
     {
         "name": "Chevreuse",
         "element": "Pyro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Fontaine"
     },
     {
         "name": "Chongyun",
         "element": "Cryo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Liyue"
     },
     {
         "name": "Citlali",
         "element": "Cryo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Natlan"
     },
     {
         "name": "Clorinde",
         "element": "Electro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Fontaine"
     },
     {
         "name": "Collei",
         "element": "Dendro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Sumeru"
     },
     {
         "name": "Columbina",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Nod Krai"
     },
     {
         "name": "Cyno",
         "element": "Electro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Sumeru"
     },
     {
         "name": "Dahlia",
         "element": "Hydro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Mondstadt"
     },
     {
         "name": "Dehya",
         "element": "Pyro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Sumeru"
     },
     {
         "name": "Diluc",
         "element": "Pyro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Mondstadt"
     },
     {
         "name": "Diona",
         "element": "Cryo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Mondstadt"
     },
     {
         "name": "Dori",
         "element": "Electro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Sumeru"
     },
     {
         "name": "Durin",
         "element": "Pyro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Mondstadt"
     },
     {
         "name": "Emilie",
         "element": "Dendro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Fontaine"
     },
     {
         "name": "Escoffier",
         "element": "Cryo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Fontaine"
     },
     {
         "name": "Eula",
         "element": "Cryo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Mondstadt"
     },
     {
         "name": "Faruzan",
         "element": "Anemo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Sumeru"
     },
     {
         "name": "Fischl",
         "element": "Electro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Mondstadt"
     },
     {
         "name": "Flins",
         "element": "Electro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Nod Krai"
     },
     {
         "name": "Freminet",
         "element": "Cryo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Fontaine"
     },
     {
         "name": "Furina",
         "element": "Hydro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Fontaine"
     },
     {
         "name": "Gaming",
         "element": "Pyro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Liyue"
     },
     {
         "name": "Ganyu",
         "element": "Cryo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Liyue"
     },
     {
         "name": "Gorou",
         "element": "Geo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Inazuma"
     },
     {
         "name": "Hu Tao",
         "element": "Pyro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Liyue"
     },
     {
         "name": "Iansan",
         "element": "Electro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Natlan"
     },
     {
         "name": "Ifa",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Natlan"
     },
     {
         "name": "Illuga",
         "element": "Geo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Nod Krai"
     },
     {
         "name": "Ineffa",
         "element": "Electro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Nod Krai"
     },
     {
         "name": "Jahoda",
         "element": "Anemo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Nod Krai"
     },
     {
         "name": "Jean",
         "element": "Anemo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Mondstadt"
     },
     {
         "name": "Kachina",
         "element": "Geo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Natlan"
     },
     {
         "name": "Kaedehara Kazuha",
         "element": "Anemo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Inazuma"
     },
     {
         "name": "Kaeya",
         "element": "Cryo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Mondstadt"
     },
     {
         "name": "Kamisato Ayaka",
         "element": "Cryo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Inazuma"
     },
     {
         "name": "Kamisato Ayato",
         "element": "Hydro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Inazuma"
     },
     {
         "name": "Kaveh",
         "element": "Dendro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Sumeru"
     },
     {
         "name": "Keqing",
         "element": "Electro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Liyue"
     },
     {
         "name": "Kinich",
         "element": "Dendro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Natlan"
     },
     {
         "name": "Kirara",
         "element": "Dendro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Inazuma"
     },
     {
         "name": "Klee",
         "element": "Pyro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Kujou Sara",
         "element": "Electro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Inazuma"
     },
     {
         "name": "Kuki Shinobu",
         "element": "Electro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Inazuma"
     },
     {
         "name": "Lan Yan",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Liyue"
     },
     {
         "name": "Lauma",
         "element": "Dendro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Nod Krai"
     },
     {
         "name": "Layla",
         "element": "Cryo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Sumeru"
     },
     {
         "name": "Linnea",
         "element": "Geo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Nod Krai"
     },
     {
         "name": "Lisa",
         "element": "Electro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Lohen",
         "element": "Cryo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Mondstadt"
     },
     {
         "name": "Lynette",
         "element": "Anemo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Fontaine"
     },
     {
         "name": "Lyney",
         "element": "Pyro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Fontaine"
     },
     {
         "name": "Mavuika",
         "element": "Pyro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Natlan"
     },
     {
         "name": "Mika",
         "element": "Cryo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Mondstadt"
     },
     {
         "name": "Mona",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Mualani",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Natlan"
     },
     {
         "name": "Nahida",
         "element": "Dendro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Sumeru"
     },
     {
         "name": "Navia",
         "element": "Geo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Fontaine"
     },
     {
         "name": "Nefer",
         "element": "Dendro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Nod Krai"
     },
     {
         "name": "Neuvillette",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Fontaine"
     },
     {
         "name": "Nicole",
         "element": "Pyro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Nilou",
         "element": "Hydro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Sumeru"
     },
     {
         "name": "Ningguang",
         "element": "Geo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Liyue"
     },
     {
         "name": "Noelle",
         "element": "Geo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Mondstadt"
     },
     {
         "name": "Odette",
         "element": "Cryo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Snezhnaya"
     },
     {
         "name": "Ororon",
         "element": "Electro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Natlan"
     },
     {
         "name": "Prune",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Qiqi",
         "element": "Cryo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Liyue"
     },
     {
         "name": "Raiden Shogun",
         "element": "Electro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Inazuma"
     },
     {
         "name": "Razor",
         "element": "Electro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Mondstadt"
     },
     {
         "name": "Rosaria",
         "element": "Cryo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Mondstadt"
     },
     {
         "name": "Sandrone",
         "element": "Cryo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Snezhnaya"
     },
     {
         "name": "Sangonomiya Kokomi",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Inazuma"
     },
     {
         "name": "Sayu",
         "element": "Anemo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Inazuma"
     },
     {
         "name": "Sethos",
         "element": "Electro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Sumeru"
     },
     {
         "name": "Shikanoin Heizou",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Inazuma"
     },
     {
         "name": "Sigewinne",
         "element": "Hydro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Fontaine"
     },
     {
         "name": "Skirk",
         "element": "Cryo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Natlan"
     },
     {
         "name": "Sucrose",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Mondstadt"
     },
     {
         "name": "Tartaglia",
         "element": "Hydro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Liyue"
     },
     {
         "name": "Thoma",
         "element": "Pyro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Inazuma"
     },
     {
         "name": "Tighnari",
         "element": "Dendro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Sumeru"
     },
     {
         "name": "Varesa",
         "element": "Electro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Natlan"
     },
     {
         "name": "Varka",
         "element": "Anemo",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Mondstadt"
     },
     {
         "name": "Venti",
         "element": "Anemo",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Mondstadt"
     },
     {
         "name": "Vesna",
         "element": "Anemo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Snezhnaya"
     },
     {
         "name": "Vodyanitsa",
         "element": "Hydro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Snezhnaya"
     },
     {
         "name": "Wanderer",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Sumeru"
     },
     {
         "name": "Wriothesley",
         "element": "Cryo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Fontaine"
     },
     {
         "name": "Xiangling",
         "element": "Pyro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Liyue"
     },
     {
         "name": "Xianyun",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Liyue"
     },
     {
         "name": "Xiao",
         "element": "Anemo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Liyue"
     },
     {
         "name": "Xilonen",
         "element": "Geo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Natlan"
     },
     {
         "name": "Xingqiu",
         "element": "Hydro",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Liyue"
     },
     {
         "name": "Xinyan",
         "element": "Pyro",
-        "weapon": "Claymore"
+        "weapon": "Claymore",
+        "region": "Liyue"
     },
     {
         "name": "Yae Miko",
         "element": "Electro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Inazuma"
     },
     {
         "name": "Yanfei",
         "element": "Pyro",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Liyue"
     },
     {
         "name": "Yaoyao",
         "element": "Dendro",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Liyue"
     },
     {
         "name": "Yelan",
         "element": "Hydro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Liyue"
     },
     {
         "name": "Yoimiya",
         "element": "Pyro",
-        "weapon": "Bow"
+        "weapon": "Bow",
+        "region": "Inazuma"
     },
     {
         "name": "Yumemizuki Mizuki",
         "element": "Anemo",
-        "weapon": "Catalyst"
+        "weapon": "Catalyst",
+        "region": "Inazuma"
     },
     {
         "name": "Yun Jin",
         "element": "Geo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Liyue"
     },
     {
         "name": "Zhongli",
         "element": "Geo",
-        "weapon": "Polearm"
+        "weapon": "Polearm",
+        "region": "Liyue"
     },
     {
         "name": "Zibai",
         "element": "Geo",
-        "weapon": "Sword"
+        "weapon": "Sword",
+        "region": "Liyue"
     }    
 ]

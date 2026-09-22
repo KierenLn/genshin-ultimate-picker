@@ -24,14 +24,6 @@ html {
     min-height: 128px;
 }
 
-.cell {
-    min-height: 160px;
-    border: 1px solid #ccc;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .first-cell {
     background-color: #1b1b1b;
@@ -42,10 +34,29 @@ html {
 
 }
 
+
+
+.cell {
+    min-height: 160px;
+    border: 3px solid #ccc;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5%;
+}
+
 .cell-img {
     max-width: 150px;
     max-height: 150px;
 }
+
+.selection-cell:hover {
+    background-color: #eee;
+}
+
+
 
 .modal {
     position: fixed;
@@ -62,56 +73,49 @@ html {
     display: none;
 }
 
+#modal-title {
+    text-align: center;
+}
+
 .modal-content {
     position: relative;
 
-    width: 600px;
+    width: 700px;
     min-height: 300px;
 
     padding: 30px;
 
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
-.option-pyro-bg{
-    background-color: #ff8359;
-}
 
-.option-hydro-bg{
-    background-color: #3b7fff;
-}
 
-.option-dendro-bg{
-    background-color: #63db73;
-}
 
-.option-electro-bg{
-    background-color: #b07ec4;
-}
-
-.option-anemo-bg{
-    background-color: #6fe8ba;
-}
-
-.option-cryo-bg{
-    background-color: #75e0e6;
-}
-
-.option-geo-bg{
-    background-color: #e6e165;
-}
 
 .close-button {
     position: absolute;
     top: 10px;
     right: 10px;
 
-    border: none;
-    background: none;
+    width: 40px;
+    height:40px;
 
-    font-size: 24px;
+    padding: 6px;
+
+    border: none;
+    border-radius: 50%;
+    background: #cacaca;
+
+    
     cursor: pointer;
+}
+.close-button:hover {
+    background-color: #a5a5a5;
+}
+.close-button img{
+    width: 100%;
+    height: 100%;
 }
 
 #character-list {
@@ -139,3 +143,105 @@ html {
 .character-option:hover {
     background-color: #eee;
 }
+
+
+
+.pyro-cell{
+    background-color: #f59f7d;
+}
+.pyro-cell:hover{
+    background-color: #fa895c;
+}
+.selected-cell.pyro-cell{
+    border: 5px outset #ed4f45;
+}
+
+.hydro-cell{
+    background-color: #73a9ff;
+}
+.hydro-cell:hover{
+    background-color: #4e8ef5;
+}
+.selected-cell.hydro-cell{
+    border: 5px outset #4088ff;
+}
+
+.dendro-cell{
+    background-color: #abeb8f;
+}
+.dendro-cell:hover{
+    background-color: #8dd46e;
+}
+.selected-cell.dendro-cell{
+    border: 5px outset #7bb42d;
+}
+
+.electro-cell{
+    background-color: #bd9adb;
+}
+.electro-cell:hover{
+    background-color: #ad7ed6;
+}
+.selected-cell.electro-cell{
+    border: 5px outset #d376f0;
+}
+
+.anemo-cell{
+    background-color: #94ebc2;
+}
+.anemo-cell:hover{
+    background-color: #67dba5;
+}
+.selected-cell.anemo-cell{
+    border: 5px outset #33ccb3;
+}
+
+.cryo-cell{
+    background-color: #abeff5;
+}
+.cryo-cell:hover{
+    background-color: #94eaf2;
+}
+.selected-cell.cryo-cell{
+    border: 5px outset #98c8e8;
+}
+
+.geo-cell{
+    background-color: #f5e78e;
+}
+.geo-cell:hover{
+    background-color: #f2e068;
+}
+.selected-cell.geo-cell{
+    border: 5px outset #cfa726;
+}
+
+
+.pyro-text {
+    color: #ed4f45;
+}
+
+.hydro-text{
+    color: #4088ff;
+}
+
+.dendro-text{
+    color: #7bb42d;
+}
+
+.electro-text {
+    color: #d376f0;
+}
+
+.anemo-text {
+    color: #33ccb3;
+}
+
+.cryo-text {
+    color: #98c8e8;
+}
+
+.geo-text {
+    color: #cfa726;
+}
+

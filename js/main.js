@@ -2,6 +2,7 @@ const grid = document.getElementById("main-grid");
 
 //VAR POUR LA FENETRE MODALE
 const modal = document.getElementById("selection-modal");
+const modalContent = document.getElementById("modal-content");
 const modalTitle = document.getElementById("modal-title");
 const characterList = document.getElementById("character-list");
 const closeModalButton = document.getElementById("close-modal");
@@ -27,6 +28,17 @@ const weapons = [
     "Catalyst",
     "Bow",
     "Favorite"
+];
+
+const regions = [
+    "Mondstadt",
+    "Liyue",
+    "Inazuma",
+    "Sumeru",
+    "Fontaine",
+    "Natlan",
+    "Nod Krai",
+    "Snezhnaya"
 ];
 
 //RECUPERATION DES DONNEES DES PERSONNAGES
@@ -132,9 +144,9 @@ function createGrid() {
         //BOUCLE POUR AJOUTER UNE CASE PAR TYPE D'ARME POUR CHAQUE ELEMENT
         for (const weapon of weapons) {
             const cell = document.createElement("div");
-
-
-            cell.classList.add("cell");
+            cell.classList.add("cell", "selection-cell");
+            if(weapon !== "Favorite")
+                cell.classList.add(`${element.toLowerCase()}-cell`);
             cell.dataset.element = element;
             cell.dataset.weapon = weapon;
             cell.selectedCharacter = null;
@@ -193,6 +205,13 @@ function openSelectionModal(element, weapon, matchingCharacters) {
     //TITRE DE LA FENETRE
     modalTitle.textContent = `${element} × ${weapon}`;
 
+    while(modalTitle.classList.length > 0) 
+    {
+        modalTitle.classList.remove(modalTitle.classList.item(0));
+    }
+
+    modalTitle.classList.add(`${element.toLowerCase()}-text`);
+
     //ON VIDE LA LISTE DES PERSONNAGES
     characterList.innerHTML = "";
 
@@ -234,6 +253,8 @@ function openSelectionModal(element, weapon, matchingCharacters) {
             selectedCell.appendChild(cellContent);
             selectedCell.selectedCharacter = character;
 
+            selectedCell.classList.add("selected-cell");
+
             selectedCell = null;
 
             //ON FERME LA FENETRE
@@ -252,12 +273,53 @@ function closeSelectionModal() {
     modal.classList.add("hidden");
 }
 
+window.addEventListener("keydown", (event) => { 
+    if(event.key === "Escape" && !modal.classList.contains("hidden"))  
+        closeSelectionModal();
+});
+modal.addEventListener("click", (event) => {
+    const clickTarget = event.target;
+
+    if(clickTarget !== modalContent && clickTarget !== modalTitle && clickTarget !== closeModalButton)
+    {
+        closeSelectionModal();
+        console.log("not modal");
+    }
+    
+})
 closeModalButton.addEventListener("click", closeSelectionModal);
+
+
+function createSpecialChoices() {
+    const specialChoices = document.getElementById("special-choices");
+
+    const mondstadtChoice = document.createElement("div");
+    mondstadtChoice.classList.add("special-choice");
+    mondstadtChoice.textContent = "Favorite from Mondstadt";
+
+    mondstadtChoice.addEventListener("click", () => {
+
+    const matchingChar = characters.filter(character => {
+        return character.region === "Mondstadt";
+    });
+
+    openSelectionModal(
+        "Mondstadt",
+        "Favorite",
+        matchingChar
+    );
+});
+
+    specialChoices.appendChild(mondstadtChoice);
+}
+
+
 
 //INITIALISATION : RECUPERATION DES DONNEES DES PERSONNAGES ET CREATION DE LA GRILLE
 async function init() {
     await loadCharacters();
     createGrid();
+    createSpecialChoices();
 }
 
 init();
