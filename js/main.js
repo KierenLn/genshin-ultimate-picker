@@ -7,7 +7,7 @@ const modalTitle = document.getElementById("modal-title");
 const characterList = document.getElementById("character-list");
 const closeModalButton = document.getElementById("close-modal");
 
-let selectedCell = null;
+let selectedTarget = null;
 
 //VAR POUR LA GRID
 const elements = [
@@ -156,7 +156,7 @@ function createGrid() {
                 const element = cell.dataset.element;
                 const weapon = cell.dataset.weapon;
 
-                selectedCell = cell;
+                selectedTarget = cell;
 
                 let matchingChar = characters.filter(character => {
                     return(character.element === element &&
@@ -210,7 +210,7 @@ function openSelectionModal(element, weapon, matchingCharacters) {
         modalTitle.classList.remove(modalTitle.classList.item(0));
     }
 
-    modalTitle.classList.add(`${element.toLowerCase()}-text`);
+    modalTitle.classList.add(`${element.replace(" ", "-").toLowerCase()}-text`);
 
     //ON VIDE LA LISTE DES PERSONNAGES
     characterList.innerHTML = "";
@@ -231,7 +231,7 @@ function openSelectionModal(element, weapon, matchingCharacters) {
 
         option.addEventListener("click", () => {
             //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
-            const previousContent = selectedCell.querySelector(".cell-content");
+            const previousContent = selectedTarget.querySelector(".cell-content");
 
             if(previousContent !== null)
                 previousContent.remove();
@@ -248,14 +248,18 @@ function openSelectionModal(element, weapon, matchingCharacters) {
             cellImg.src = `./img/Characters/${character.name}_Icon.png`;
 
             cellContent.appendChild(cellImg);
+
+            selectedTarget.textContent = null;
             
 
-            selectedCell.appendChild(cellContent);
-            selectedCell.selectedCharacter = character;
+            selectedTarget.appendChild(cellContent);
+            selectedTarget.selectedCharacter = character;
 
-            selectedCell.classList.add("selected-cell");
+            selectedTarget.classList.add("selected-cell");
 
-            selectedCell = null;
+            
+
+            selectedTarget = null;
 
             //ON FERME LA FENETRE
             closeSelectionModal();
@@ -277,7 +281,7 @@ window.addEventListener("keydown", (event) => {
     if(event.key === "Escape" && !modal.classList.contains("hidden"))  
         closeSelectionModal();
 });
-modal.addEventListener("click", (event) => {
+/*modal.addEventListener("click", (event) => {
     const clickTarget = event.target;
 
     if(clickTarget !== modalContent && clickTarget !== modalTitle && clickTarget !== closeModalButton)
@@ -286,31 +290,96 @@ modal.addEventListener("click", (event) => {
         console.log("not modal");
     }
     
-})
+})*/
 closeModalButton.addEventListener("click", closeSelectionModal);
 
 
 function createSpecialChoices() {
     const specialChoices = document.getElementById("special-choices");
 
-    const mondstadtChoice = document.createElement("div");
-    mondstadtChoice.classList.add("special-choice");
-    mondstadtChoice.textContent = "Favorite from Mondstadt";
+    //PERSO PREF PAR REGION
+    for(const region of regions) {
+        const regionChoice = document.createElement("div");
+        //regionChoice.classList.add("special-choice", "cell");
 
-    mondstadtChoice.addEventListener("click", () => {
+        const regionChoiceTitle = document.createElement("h3");
+        regionChoiceTitle.classList.add("special-cell-title");
+        regionChoiceTitle.textContent = `Favorite from ${region}`;
+        regionChoice.appendChild(regionChoiceTitle);
 
-    const matchingChar = characters.filter(character => {
-        return character.region === "Mondstadt";
-    });
+        const regionChoiceCell = document.createElement("div");
+        regionChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+        regionChoice.appendChild(regionChoiceCell);
 
-    openSelectionModal(
-        "Mondstadt",
-        "Favorite",
-        matchingChar
-    );
-});
+        regionChoice.addEventListener("click", () => {
+            const matchingChar = characters.filter(character => {
+                return character.region === region;
+            })
 
-    specialChoices.appendChild(mondstadtChoice);
+            selectedTarget = regionChoiceCell;
+
+            openSelectionModal(
+                region,
+                "Favorite",
+                matchingChar
+            );
+        });
+
+
+        switch(region) {
+            case "Mondstadt":
+                regionChoiceCell.classList.add("anemo-cell");
+                regionChoiceTitle.classList.add("anemo-text");
+                break;
+            case "Liyue":
+                regionChoiceCell.classList.add("geo-cell");
+                regionChoiceTitle.classList.add("geo-text");
+                break;
+            case "Inazuma":
+                regionChoiceCell.classList.add("electro-cell");
+                regionChoiceTitle.classList.add("electro-text");
+                break;
+            case "Sumeru":
+                regionChoiceCell.classList.add("dendro-cell");
+                regionChoiceTitle.classList.add("dendro-text");
+                break;
+            case "Fontaine":
+                regionChoiceCell.classList.add("hydro-cell");
+                regionChoiceTitle.classList.add("hydro-text");
+                break;
+            case "Natlan":
+                regionChoiceCell.classList.add("pyro-cell");
+                regionChoiceTitle.classList.add("pyro-text");
+                break;
+            case "Nod Krai":
+                //regionChoiceCell.classList.add("anemo-cell");
+                break;
+            case "Snezhnaya":
+                regionChoiceCell.classList.add("cryo-cell");
+                regionChoiceTitle.classList.add("cryo-text");
+                break;
+        }
+
+        specialChoices.appendChild(regionChoice);
+        
+    }
+
+
+
+    /*const favRegionChoice = document.createElement("div");
+        
+
+    const favRegionChoiceTitle = document.createElement("h3");
+    favRegionChoiceTitle.classList.add("special-cell-title");
+    favRegionChoiceTitle.textContent = `Favorite Region`;
+    favRegionChoice.appendChild(favRegionChoiceTitle);
+
+    const favRegionChoiceCell = document.createElement("div");
+    favRegionChoiceCell.classList.add("special-choice", "cell");
+    favRegionChoice.appendChild(favRegionChoiceCell);
+
+
+    specialChoices.appendChild(favRegionChoice);*/
 }
 
 

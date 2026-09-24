@@ -15,6 +15,18 @@ html {
     gap: 4px;
 }
 
+#special-choices{
+    display: grid;
+    grid-auto-columns: 160px;
+    grid-auto-flow: column;
+    gap: 4px;
+}
+
+.special-cell-title {
+    text-align: center;
+    
+}
+
 .header-img {
     max-width: 128px;
 }
@@ -122,6 +134,9 @@ html {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
+
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .character-option {
