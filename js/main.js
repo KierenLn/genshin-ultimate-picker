@@ -147,6 +147,9 @@ function createGrid() {
             cell.classList.add("cell", "selection-cell");
             if(weapon !== "Favorite")
                 cell.classList.add(`${element.toLowerCase()}-cell`);
+            else{
+                cell.classList.add("favorite-cell");
+            }
             cell.dataset.element = element;
             cell.dataset.weapon = weapon;
             cell.selectedCharacter = null;
@@ -201,7 +204,7 @@ function createGrid() {
 }
 
 
-function openSelectionModal(element, weapon, matchingCharacters) {
+function openSelectionModal(element, weapon, options) {
     //TITRE DE LA FENETRE
     modalTitle.textContent = `${element} × ${weapon}`;
 
@@ -216,20 +219,20 @@ function openSelectionModal(element, weapon, matchingCharacters) {
     characterList.innerHTML = "";
 
     //ON CREE UN ELEMENT POUR CHAQUE PERSONNAGE CORRESPONDANT A L'ELEMENT ET A L'ARME
-    for (const character of matchingCharacters) {
-        const option = document.createElement("div");
+    for (const option of options) {
+        const optionElement = document.createElement("div");
 
         const optionImg = document.createElement("img");
         optionImg.classList.add("option-img");
-        optionImg.alt = character.name;
-        optionImg.src = `./img/Characters/${character.name}_Icon.png`;
+        optionImg.alt = option.name;
+        optionImg.src = `./img/Characters/${option.name}_Icon.png`;
 
-        option.appendChild(optionImg);
+        optionElement.appendChild(optionImg);
 
-        option.classList.add("character-option");
+        optionElement.classList.add("character-option");
         
 
-        option.addEventListener("click", () => {
+        optionElement.addEventListener("click", () => {
             //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
             const previousContent = selectedTarget.querySelector(".cell-content");
 
@@ -244,16 +247,14 @@ function openSelectionModal(element, weapon, matchingCharacters) {
 
             const cellImg = document.createElement("img");
             cellImg.classList.add("cell-img");
-            cellImg.alt = character.name;
-            cellImg.src = `./img/Characters/${character.name}_Icon.png`;
+            cellImg.alt = option.name;
+            cellImg.src = `./img/Characters/${option.name}_Icon.png`;
 
             cellContent.appendChild(cellImg);
-
-            selectedTarget.textContent = null;
             
 
             selectedTarget.appendChild(cellContent);
-            selectedTarget.selectedCharacter = character;
+            selectedTarget.selectedCharacter = option;
 
             selectedTarget.classList.add("selected-cell");
 
@@ -266,7 +267,7 @@ function openSelectionModal(element, weapon, matchingCharacters) {
 
         })
 
-        characterList.appendChild(option);
+        characterList.appendChild(optionElement);
     }
 
     modal.classList.remove("hidden");
@@ -300,7 +301,6 @@ function createSpecialChoices() {
     //PERSO PREF PAR REGION
     for(const region of regions) {
         const regionChoice = document.createElement("div");
-        //regionChoice.classList.add("special-choice", "cell");
 
         const regionChoiceTitle = document.createElement("h3");
         regionChoiceTitle.classList.add("special-cell-title");
@@ -311,7 +311,7 @@ function createSpecialChoices() {
         regionChoiceCell.classList.add("special-choice", "cell", "selection-cell");
         regionChoice.appendChild(regionChoiceCell);
 
-        regionChoice.addEventListener("click", () => {
+        regionChoiceCell.addEventListener("click", () => {
             const matchingChar = characters.filter(character => {
                 return character.region === region;
             })

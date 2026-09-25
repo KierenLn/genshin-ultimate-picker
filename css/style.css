@@ -24,7 +24,8 @@ html {
 
 .special-cell-title {
     text-align: center;
-    
+    min-height: 40px;
+    margin: 0;
 }
 
 .header-img {
@@ -229,6 +230,17 @@ html {
 }
 .selected-cell.geo-cell{
     border: 5px outset #cfa726;
+}
+
+.favorite-cell{
+    background: linear-gradient(#fac5c9, #b7e8ff);
+}
+.favorite-cell:hover{
+    background: linear-gradient(#e2a7d2, #a5e8fd);
+}
+.selected-cell.favorite-cell{
+    border-image: linear-gradient(to bottom right, #f986d1, #54a3f8) 1;
+    border-width: 5px;
 }
 
 
