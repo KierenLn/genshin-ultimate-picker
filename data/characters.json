@@ -56,7 +56,8 @@
         "name": "Barbara",
         "element": "Hydro",
         "weapon": "Catalyst",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Barbara"
     },
     {
         "name": "Beidou",
@@ -68,7 +69,8 @@
         "name": "Bennett",
         "element": "Pyro",
         "weapon": "Sword",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Bennett"
     },
     {
         "name": "Candace",
@@ -80,7 +82,8 @@
         "name": "Charlotte",
         "element": "Cryo",
         "weapon": "Catalyst",
-        "region": "Fontaine"
+        "region": "Fontaine",
+        "skin": "Charlotte"
     },
     {
         "name": "Chasca",
@@ -104,7 +107,8 @@
         "name": "Citlali",
         "element": "Cryo",
         "weapon": "Catalyst",
-        "region": "Natlan"
+        "region": "Natlan",
+        "skin": "Citlali"
     },
     {
         "name": "Clorinde",
@@ -146,7 +150,8 @@
         "name": "Diluc",
         "element": "Pyro",
         "weapon": "Claymore",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Diluc"
     },
     {
         "name": "Diona",
@@ -194,7 +199,8 @@
         "name": "Fischl",
         "element": "Electro",
         "weapon": "Bow",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Fischl"
     },
     {
         "name": "Flins",
@@ -224,7 +230,8 @@
         "name": "Ganyu",
         "element": "Cryo",
         "weapon": "Bow",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Ganyu"
     },
     {
         "name": "Gorou",
@@ -236,7 +243,8 @@
         "name": "Hu Tao",
         "element": "Pyro",
         "weapon": "Polearm",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Hu Tao"
     },
     {
         "name": "Iansan",
@@ -272,7 +280,8 @@
         "name": "Jean",
         "element": "Anemo",
         "weapon": "Sword",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Jean"
     },
     {
         "name": "Kachina",
@@ -290,13 +299,15 @@
         "name": "Kaeya",
         "element": "Cryo",
         "weapon": "Sword",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Kaeya"
     },
     {
         "name": "Kamisato Ayaka",
         "element": "Cryo",
         "weapon": "Sword",
-        "region": "Inazuma"
+        "region": "Inazuma",
+        "skin": "Kamisato Ayaka"
     },
     {
         "name": "Kamisato Ayato",
@@ -314,7 +325,8 @@
         "name": "Keqing",
         "element": "Electro",
         "weapon": "Sword",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Keqing"
     },
     {
         "name": "Kinich",
@@ -326,13 +338,15 @@
         "name": "Kirara",
         "element": "Dendro",
         "weapon": "Sword",
-        "region": "Inazuma"
+        "region": "Inazuma",
+        "skin": "Kirara"
     },
     {
         "name": "Klee",
         "element": "Pyro",
         "weapon": "Catalyst",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Klee"
     },
     {
         "name": "Kujou Sara",
@@ -374,7 +388,8 @@
         "name": "Lisa",
         "element": "Electro",
         "weapon": "Catalyst",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "skin": "Lisa"
     },
     {
         "name": "Lohen",
@@ -440,7 +455,8 @@
         "name": "Neuvillette",
         "element": "Hydro",
         "weapon": "Catalyst",
-        "region": "Fontaine"
+        "region": "Fontaine",
+        "skin": "Neuvillette"
     },
     {
         "name": "Nicole",
@@ -458,7 +474,8 @@
         "name": "Ningguang",
         "element": "Geo",
         "weapon": "Catalyst",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Ningguang"
     },
     {
         "name": "Noelle",
@@ -531,6 +548,13 @@
         "element": "Electro",
         "weapon": "Bow",
         "region": "Sumeru"
+    },
+    {
+        "name": "Shenhe",
+        "element": "Cryo",
+        "weapon": "Polearm",
+        "region": "Liyue",
+        "skin": "Shenhe"
     },
     {
         "name": "Shikanoin Heizou",
@@ -620,7 +644,8 @@
         "name": "Xiangling",
         "element": "Pyro",
         "weapon": "Polearm",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Xiangling"
     },
     {
         "name": "Xianyun",
@@ -644,7 +669,8 @@
         "name": "Xingqiu",
         "element": "Hydro",
         "weapon": "Sword",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Xingqiu"
     },
     {
         "name": "Xinyan",
@@ -668,13 +694,15 @@
         "name": "Yaoyao",
         "element": "Dendro",
         "weapon": "Polearm",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Yaoyao"
     },
     {
         "name": "Yelan",
         "element": "Hydro",
         "weapon": "Bow",
-        "region": "Liyue"
+        "region": "Liyue",
+        "skin": "Yelan"
     },
     {
         "name": "Yoimiya",

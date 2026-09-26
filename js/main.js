@@ -191,9 +191,19 @@ function createGrid() {
 
 
                 openSelectionModal(
-                    element,
-                    weapon,
-                    matchingChar
+                    `${element} x ${weapon}`,
+                    matchingChar,
+                    getCharacterImg,
+                    (character) => {
+                        displaySelection(
+                            selectedTarget,
+                            character,
+                            getCharacterImg
+                        );
+            
+                        selectedTarget.selectedCharacter = character;
+                        selectedTarget = null;
+                    }
                 );
             });
 
@@ -203,17 +213,52 @@ function createGrid() {
 
 }
 
+function getCharacterImg(character) {
+    return `./img/Characters/${character}_Icon.png`;
+}
 
-function openSelectionModal(element, weapon, options) {
+function getRegionImg(region) {
+    return `./img/Icon_Region/${region}_Icon.png`;
+}
+
+function getSkinImg(character) {
+    return `./img/Skins/${character}_Skin.png`;
+}
+
+function displaySelection(target, value, getImg) {
+    //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
+    const previousContent = target.querySelector(".cell-content");
+
+    if(previousContent !== null)
+        previousContent.remove();
+
+            
+
+    //ON CREE UN NOUVEAU DIV POUR LE PERSONNAGE SELECTIONNE ET ON L'AJOUTE DANS LA CASE
+    const cellContent = document.createElement("div");
+    cellContent.classList.add("cell-content");
+
+    const cellImg = document.createElement("img");
+    cellImg.classList.add("cell-img");
+    cellImg.src = getImg(value.name ?? value);
+
+    cellContent.appendChild(cellImg);
+    target.appendChild(cellContent);
+
+    target.classList.add("selected-cell");
+}
+
+
+function openSelectionModal(title, options, getImg, onSelect) {
     //TITRE DE LA FENETRE
-    modalTitle.textContent = `${element} × ${weapon}`;
+    modalTitle.textContent = title;
 
     while(modalTitle.classList.length > 0) 
     {
         modalTitle.classList.remove(modalTitle.classList.item(0));
     }
 
-    modalTitle.classList.add(`${element.replace(" ", "-").toLowerCase()}-text`);
+    //modalTitle.classList.add(`${element.replace(" ", "-").toLowerCase()}-text`);
 
     //ON VIDE LA LISTE DES PERSONNAGES
     characterList.innerHTML = "";
@@ -224,8 +269,8 @@ function openSelectionModal(element, weapon, options) {
 
         const optionImg = document.createElement("img");
         optionImg.classList.add("option-img");
-        optionImg.alt = option.name;
-        optionImg.src = `./img/Characters/${option.name}_Icon.png`;
+        optionImg.alt = option.name ?? option;
+        optionImg.src = getImg(option.name ?? option);
 
         optionElement.appendChild(optionImg);
 
@@ -233,38 +278,8 @@ function openSelectionModal(element, weapon, options) {
         
 
         optionElement.addEventListener("click", () => {
-            //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
-            const previousContent = selectedTarget.querySelector(".cell-content");
-
-            if(previousContent !== null)
-                previousContent.remove();
-
-            
-
-            //ON CREE UN NOUVEAU DIV POUR LE PERSONNAGE SELECTIONNE ET ON L'AJOUTE DANS LA CASE
-            const cellContent = document.createElement("div");
-            cellContent.classList.add("cell-content");
-
-            const cellImg = document.createElement("img");
-            cellImg.classList.add("cell-img");
-            cellImg.alt = option.name;
-            cellImg.src = `./img/Characters/${option.name}_Icon.png`;
-
-            cellContent.appendChild(cellImg);
-            
-
-            selectedTarget.appendChild(cellContent);
-            selectedTarget.selectedCharacter = option;
-
-            selectedTarget.classList.add("selected-cell");
-
-            
-
-            selectedTarget = null;
-
-            //ON FERME LA FENETRE
+            onSelect(option);
             closeSelectionModal();
-
         })
 
         characterList.appendChild(optionElement);
@@ -319,12 +334,21 @@ function createSpecialChoices() {
             selectedTarget = regionChoiceCell;
 
             openSelectionModal(
-                region,
-                "Favorite",
-                matchingChar
+                `Favorite from ${region}`,
+                matchingChar,
+                getCharacterImg,
+                (character) => {
+                    displaySelection(
+                        selectedTarget,
+                        character,
+                        getCharacterImg
+                    );
+            
+                    selectedTarget.selectedCharacter = character;
+                    selectedTarget = null;
+                }
             );
         });
-
 
         switch(region) {
             case "Mondstadt":
@@ -365,8 +389,8 @@ function createSpecialChoices() {
     }
 
 
-
-    /*const favRegionChoice = document.createElement("div");
+    //REGION PREFEREE
+    const favRegionChoice = document.createElement("div");
         
 
     const favRegionChoiceTitle = document.createElement("h3");
@@ -378,8 +402,66 @@ function createSpecialChoices() {
     favRegionChoiceCell.classList.add("special-choice", "cell");
     favRegionChoice.appendChild(favRegionChoiceCell);
 
+    favRegionChoiceCell.addEventListener("click", () => {
+        selectedTarget = favRegionChoiceCell;
 
-    specialChoices.appendChild(favRegionChoice);*/
+        openSelectionModal(
+            "Favorite Region",
+            regions,
+            getRegionImg,
+            (region) => {
+                displaySelection(
+                    selectedTarget,
+                    region,
+                    getRegionImg
+                );
+
+                selectedTarget.selectedRegion = region;
+
+                selectedTarget = null;
+            }
+        );
+    });
+
+    specialChoices.appendChild(favRegionChoice);
+
+
+    //SKIN PREFERE
+    const favSkinChoice = document.createElement("div");
+
+    const favSkinChoiceTitle = document.createElement("h3");
+    favSkinChoiceTitle.classList.add("special-cell-title");
+    favSkinChoiceTitle.textContent = `Favorite Skin`;
+    favSkinChoice.appendChild(favSkinChoiceTitle);
+
+    const favSkinChoiceCell = document.createElement("div");
+    favSkinChoiceCell.classList.add("special-choice", "cell");
+    favSkinChoice.appendChild(favSkinChoiceCell);
+
+    favSkinChoiceCell.addEventListener("click", () => {
+        const matchingChar = characters.filter(character => {
+            return character.skin;
+        })
+        selectedTarget = favSkinChoiceCell;
+
+        openSelectionModal(
+            "Favorite Skin",
+            matchingChar,
+            getSkinImg,
+            (character) => {
+                displaySelection(
+                    selectedTarget,
+                    character,
+                    getSkinImg
+                );
+
+                selectedTarget.selectedCharacter = character;
+                selectedTarget = null;
+            }
+        );
+    });
+
+    specialChoices.appendChild(favSkinChoice);
 }
 
 
