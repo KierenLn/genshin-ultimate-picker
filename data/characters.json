@@ -44,7 +44,7 @@
         "name": "Arlecchino",
         "element": "Pyro",
         "weapon": "Polearm",
-        "region": "Fontaine"
+        "region": "Snezhnaya"
     },
     {
         "name": "Baizhu",
@@ -92,6 +92,12 @@
         "region": "Natlan"
     },
     {
+        "name": "Chiori",
+        "element": "Geo",
+        "weapon": "Sword",
+        "region": "Inazuma"
+    },
+    {
         "name": "Chevreuse",
         "element": "Pyro",
         "weapon": "Polearm",
@@ -137,7 +143,7 @@
     {
         "name": "Dahlia",
         "element": "Hydro",
-        "weapon": "Polearm",
+        "weapon": "Sword",
         "region": "Mondstadt"
     },
     {
@@ -174,7 +180,7 @@
     {
         "name": "Emilie",
         "element": "Dendro",
-        "weapon": "Catalyst",
+        "weapon": "Polearm",
         "region": "Fontaine"
     },
     {
@@ -400,7 +406,7 @@
     {
         "name": "Lynette",
         "element": "Anemo",
-        "weapon": "Bow",
+        "weapon": "Sword",
         "region": "Fontaine"
     },
     {
@@ -584,7 +590,7 @@
         "name": "Tartaglia",
         "element": "Hydro",
         "weapon": "Bow",
-        "region": "Liyue"
+        "region": "Snezhnaya"
     },
     {
         "name": "Thoma",

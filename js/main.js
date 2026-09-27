@@ -229,8 +229,33 @@ function displaySelection(target, value, getImg) {
     //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
     const previousContent = target.querySelector(".cell-content");
 
+    //ON VIDE EGALEMENT LA CASE FAVORITE SI LE PERSO N'EST PLUS SELECTIONNE DANS LA GRID
     if(previousContent !== null)
+    {
+        if(target.parentNode.id === "main-grid") {
+            let selectedCells = document.querySelectorAll(".selected-cell.favorite-cell");
+        
+            let selectedCellsContent = [];
+            selectedCells.forEach(c => {
+                if(c.selectedCharacter.name === target.selectedCharacter.name)
+                {
+                    selectedCellsContent.push(c.querySelector(".cell-content"));
+                    c.classList.remove("selected-cell");
+                }
+            });
+
+            selectedCellsContent.forEach(c => {
+                c.remove();
+            })
+            refSelectedCells = [];
+            selectedCells = [];
+            selectedCellsContent = [];
+        }
+        
+        
+
         previousContent.remove();
+    }
 
             
 
