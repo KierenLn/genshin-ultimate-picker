@@ -7,6 +7,8 @@ const modalTitle = document.getElementById("modal-title");
 const characterList = document.getElementById("character-list");
 const closeModalButton = document.getElementById("close-modal");
 
+const downloadGridButton = document.getElementById("download-grid");
+
 let selectedTarget = null;
 
 //VAR POUR LA GRID
@@ -488,6 +490,22 @@ function createSpecialChoices() {
 
     specialChoices.appendChild(favSkinChoice);
 }
+
+
+
+function downloadGrid() {
+    htmlToImage.toPng(grid)
+        .then((dataUrl) => {
+            const link = document.createElement("a");
+
+            link.download = "genshin-picker.png";
+            link.href = dataUrl;
+
+            link.click();
+        });
+}
+
+downloadGridButton.addEventListener("click", downloadGrid);
 
 
 
