@@ -132,7 +132,8 @@
         "name": "Columbina",
         "element": "Hydro",
         "weapon": "Catalyst",
-        "region": "Nod Krai"
+        "region": "Nod Krai",
+        "archon": "7"
     },
     {
         "name": "Cyno",
@@ -224,7 +225,8 @@
         "name": "Furina",
         "element": "Hydro",
         "weapon": "Sword",
-        "region": "Fontaine"
+        "region": "Fontaine",
+        "archon": "5"
     },
     {
         "name": "Gaming",
@@ -419,7 +421,8 @@
         "name": "Mavuika",
         "element": "Pyro",
         "weapon": "Claymore",
-        "region": "Natlan"
+        "region": "Natlan",
+        "archon": "6"
     },
     {
         "name": "Mika",
@@ -443,7 +446,8 @@
         "name": "Nahida",
         "element": "Dendro",
         "weapon": "Catalyst",
-        "region": "Sumeru"
+        "region": "Sumeru",
+        "archon": "4"
     },
     {
         "name": "Navia",
@@ -517,7 +521,8 @@
         "name": "Raiden Shogun",
         "element": "Electro",
         "weapon": "Polearm",
-        "region": "Inazuma"
+        "region": "Inazuma",
+        "archon": "3"
     },
     {
         "name": "Razor",
@@ -620,7 +625,8 @@
         "name": "Venti",
         "element": "Anemo",
         "weapon": "Bow",
-        "region": "Mondstadt"
+        "region": "Mondstadt",
+        "archon": "1"
     },
     {
         "name": "Vesna",
@@ -732,7 +738,8 @@
         "name": "Zhongli",
         "element": "Geo",
         "weapon": "Polearm",
-        "region": "Liyue"
+        "region": "Liyue",
+        "archon": "2"
     },
     {
         "name": "Zibai",

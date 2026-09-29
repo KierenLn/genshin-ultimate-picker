@@ -341,7 +341,7 @@ closeModalButton.addEventListener("click", closeSelectionModal);
 function createSpecialChoices() {
     const specialChoices = document.getElementById("special-choices");
 
-    //PERSO PREF PAR REGION
+    //#region PERSO PREF PAR REGION
     for(const region of regions) {
         const regionChoice = document.createElement("div");
 
@@ -417,8 +417,10 @@ function createSpecialChoices() {
         
     }
 
+    //#endregion
 
-    //REGION PREFEREE
+
+    //#region REGION PREFEREE
     const favRegionChoice = document.createElement("div");
         
 
@@ -454,8 +456,9 @@ function createSpecialChoices() {
 
     specialChoices.appendChild(favRegionChoice);
 
+    //#endregion
 
-    //SKIN PREFERE
+    //#region SKIN PREFERE
     const favSkinChoice = document.createElement("div");
 
     const favSkinChoiceTitle = document.createElement("h3");
@@ -491,6 +494,62 @@ function createSpecialChoices() {
     });
 
     specialChoices.appendChild(favSkinChoice);
+
+    //#endregion
+
+    //#region ARCHON PREFERE
+    const favArchonChoice = document.createElement("div");
+
+    const favArchonChoiceTitle = document.createElement("h3");
+    favArchonChoiceTitle.classList.add("special-cell-title");
+    favArchonChoiceTitle.textContent = `Favorite Archon`;
+    favArchonChoice.appendChild(favArchonChoiceTitle);
+
+    const favArchonChoiceCell = document.createElement("div");
+    favArchonChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favArchonChoice.appendChild(favArchonChoiceCell);
+
+    favArchonChoiceCell.addEventListener("click", () => {
+        const matchingChar = characters.filter(character => {
+            return character.archon;
+        })
+
+        matchingChar.sort((a, b) => {
+            const archonA = a.archon;
+            const archonB = b.archon;
+            if(archonA < archonB)
+                return -1;
+
+            if(archonA > archonB)
+                return 1;
+
+            return 0;
+        });
+        
+        selectedTarget = favArchonChoiceCell;
+
+        openSelectionModal(
+            "Favorite Archon",
+            matchingChar,
+            getCharacterImg,
+            (character) => {
+                displaySelection(
+                    selectedTarget,
+                    character,
+                    getSkinImg
+                );
+
+                selectedTarget.selectedCharacter = character;
+                selectedTarget = null;
+            }
+        );
+    });
+
+    specialChoices.appendChild(favArchonChoice);
+
+    //#endregion
+
+    
 }
 
 
