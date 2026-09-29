@@ -5,6 +5,27 @@
 
 html {
     font-family: 'Genshin', sans-serif;
+    cursor: url("./img/UI/cursor.cur"), default;
+}
+
+#main {
+    background-color: white;
+}
+
+#download-grid {
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+
+    height: 100px;
+    width: 100px;
+
+    background-color: #50586b;
+    color: white;
+}
+
+#download-grid:hover {
+    background-color: #485365;
 }
 
 
@@ -41,14 +62,7 @@ html {
 }
 
 
-.first-cell {
-    background-color: #1b1b1b;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    text-align: center;
 
-}
 
 
 
@@ -60,7 +74,9 @@ html {
     align-items: center;
     justify-content: center;
 
-    border-radius: 5%;
+    border-radius: 10px;
+
+    background-color: white;
 }
 
 .cell-img {
@@ -72,7 +88,14 @@ html {
     background-color: #eee;
 }
 
+.first-cell {
+    background-color: #50586b;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
 
+}
 
 .modal {
     position: fixed;
@@ -165,6 +188,8 @@ html {
 
 
 
+
+
 .pyro-cell{
     background-color: #f59f7d;
 }
@@ -246,6 +271,13 @@ html {
     border-width: 5px;
 }
 
+.nod-krai-cell {
+    background-color: #a299b8;
+}
+.nod-krai-cell:hover {
+    background-color: #8e86ad;
+}
+
 
 .pyro-text {
     color: #ed4f45;
@@ -273,5 +305,9 @@ html {
 
 .geo-text {
     color: #cfa726;
+}
+
+.nod-krai-text {
+    color: #e8cefe;
 }
 

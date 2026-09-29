@@ -1,3 +1,4 @@
+const mainPage = document.getElementById("main");
 const grid = document.getElementById("main-grid");
 
 //VAR POUR LA FENETRE MODALE
@@ -403,7 +404,8 @@ function createSpecialChoices() {
                 regionChoiceTitle.classList.add("pyro-text");
                 break;
             case "Nod Krai":
-                //regionChoiceCell.classList.add("anemo-cell");
+                regionChoiceCell.classList.add("nod-krai-cell");
+                regionChoiceTitle.classList.add("nod-krai-text");
                 break;
             case "Snezhnaya":
                 regionChoiceCell.classList.add("cryo-cell");
@@ -426,7 +428,7 @@ function createSpecialChoices() {
     favRegionChoice.appendChild(favRegionChoiceTitle);
 
     const favRegionChoiceCell = document.createElement("div");
-    favRegionChoiceCell.classList.add("special-choice", "cell");
+    favRegionChoiceCell.classList.add("special-choice", "cell", "selection-cell");
     favRegionChoice.appendChild(favRegionChoiceCell);
 
     favRegionChoiceCell.addEventListener("click", () => {
@@ -462,7 +464,7 @@ function createSpecialChoices() {
     favSkinChoice.appendChild(favSkinChoiceTitle);
 
     const favSkinChoiceCell = document.createElement("div");
-    favSkinChoiceCell.classList.add("special-choice", "cell");
+    favSkinChoiceCell.classList.add("special-choice", "cell", "selection-cell");
     favSkinChoice.appendChild(favSkinChoiceCell);
 
     favSkinChoiceCell.addEventListener("click", () => {
@@ -494,7 +496,7 @@ function createSpecialChoices() {
 
 
 function downloadGrid() {
-    htmlToImage.toPng(grid)
+    htmlToImage.toPng(mainPage)
         .then((dataUrl) => {
             const link = document.createElement("a");
 
