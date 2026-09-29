@@ -240,7 +240,7 @@ function displaySelection(target, value, getImg) {
         
             let selectedCellsContent = [];
             selectedCells.forEach(c => {
-                if(c.selectedCharacter.name === target.selectedCharacter.name)
+                if(c.selectedCharacter.name === target.selectedCharacter.name && c.selectedCharacter.name !== value.name)
                 {
                     selectedCellsContent.push(c.querySelector(".cell-content"));
                     c.classList.remove("selected-cell");
@@ -419,6 +419,57 @@ function createSpecialChoices() {
 
     //#endregion
 
+    //#region ARCHON PREFERE
+    const favArchonChoice = document.createElement("div");
+
+    const favArchonChoiceTitle = document.createElement("h3");
+    favArchonChoiceTitle.classList.add("special-cell-title");
+    favArchonChoiceTitle.textContent = `Favorite Archon`;
+    favArchonChoice.appendChild(favArchonChoiceTitle);
+
+    const favArchonChoiceCell = document.createElement("div");
+    favArchonChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favArchonChoice.appendChild(favArchonChoiceCell);
+
+    favArchonChoiceCell.addEventListener("click", () => {
+        const matchingChar = characters.filter(character => {
+            return character.archon;
+        })
+
+        matchingChar.sort((a, b) => {
+            const archonA = a.archon;
+            const archonB = b.archon;
+            if(archonA < archonB)
+                return -1;
+
+            if(archonA > archonB)
+                return 1;
+
+            return 0;
+        });
+        
+        selectedTarget = favArchonChoiceCell;
+
+        openSelectionModal(
+            "Favorite Archon",
+            matchingChar,
+            getCharacterImg,
+            (character) => {
+                displaySelection(
+                    selectedTarget,
+                    character,
+                    getCharacterImg
+                );
+
+                selectedTarget.selectedCharacter = character;
+                selectedTarget = null;
+            }
+        );
+    });
+
+    specialChoices.appendChild(favArchonChoice);
+
+    //#endregion
 
     //#region REGION PREFEREE
     const favRegionChoice = document.createElement("div");
@@ -494,58 +545,6 @@ function createSpecialChoices() {
     });
 
     specialChoices.appendChild(favSkinChoice);
-
-    //#endregion
-
-    //#region ARCHON PREFERE
-    const favArchonChoice = document.createElement("div");
-
-    const favArchonChoiceTitle = document.createElement("h3");
-    favArchonChoiceTitle.classList.add("special-cell-title");
-    favArchonChoiceTitle.textContent = `Favorite Archon`;
-    favArchonChoice.appendChild(favArchonChoiceTitle);
-
-    const favArchonChoiceCell = document.createElement("div");
-    favArchonChoiceCell.classList.add("special-choice", "cell", "selection-cell");
-    favArchonChoice.appendChild(favArchonChoiceCell);
-
-    favArchonChoiceCell.addEventListener("click", () => {
-        const matchingChar = characters.filter(character => {
-            return character.archon;
-        })
-
-        matchingChar.sort((a, b) => {
-            const archonA = a.archon;
-            const archonB = b.archon;
-            if(archonA < archonB)
-                return -1;
-
-            if(archonA > archonB)
-                return 1;
-
-            return 0;
-        });
-        
-        selectedTarget = favArchonChoiceCell;
-
-        openSelectionModal(
-            "Favorite Archon",
-            matchingChar,
-            getCharacterImg,
-            (character) => {
-                displaySelection(
-                    selectedTarget,
-                    character,
-                    getSkinImg
-                );
-
-                selectedTarget.selectedCharacter = character;
-                selectedTarget = null;
-            }
-        );
-    });
-
-    specialChoices.appendChild(favArchonChoice);
 
     //#endregion
 

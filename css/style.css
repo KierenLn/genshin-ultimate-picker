@@ -33,14 +33,13 @@ html, body, button {
 
 #main-grid{
     display: grid;
-    grid-template-columns: 160px repeat(6, 160px);
+    grid-template-columns: 170px repeat(6, 170px);
     gap: 4px;
 }
 
 #special-choices{
     display: grid;
-    grid-auto-columns: 160px;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, 170px);
     gap: 4px;
 }
 
@@ -74,6 +73,7 @@ html, body, button {
 
 .cell {
     min-height: 160px;
+    min-width: 160px;
     border: 3px solid #ccc;
 
     display: flex;
@@ -125,7 +125,7 @@ html, body, button {
 .modal-content {
     position: relative;
 
-    width: 700px;
+    width: 810px;
     min-height: 300px;
 
     padding: 30px;
@@ -172,7 +172,7 @@ html, body, button {
 .character-option {
     padding: 15px;
 
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 5px;
 
     text-align: center;
