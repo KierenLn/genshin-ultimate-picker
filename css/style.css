@@ -11,6 +11,9 @@ html, body, button {
 
 #main {
     background-color: white;
+    min-width: 1400px;
+
+    padding: 10px;
 }
 
 #download-grid {
@@ -37,10 +40,27 @@ html, body, button {
     gap: 4px;
 }
 
+#out-grid {
+    display:flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+#favorite-team {
+    display: grid;
+    grid-template-columns: repeat(4, 170px);
+    gap: 4px;
+}
+
 #special-choices{
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, 170px);
     gap: 4px;
+}
+
+#special-choices .cell {
+    margin-bottom: 10px;
 }
 
 .special-cell-title {

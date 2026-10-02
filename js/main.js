@@ -1,5 +1,6 @@
 const mainPage = document.getElementById("main");
 const grid = document.getElementById("main-grid");
+const outGrid = document.getElementById("out-grid");
 
 //VAR POUR LA FENETRE MODALE
 const modal = document.getElementById("selection-modal");
@@ -170,7 +171,7 @@ function createGrid() {
                     )
                 });
 
-
+            
                 //PERSOS DEJA SELECTIONNES
                 const selectedCharacters = getSelectedCharacters();
 
@@ -250,7 +251,7 @@ function displaySelection(target, value, getImg) {
             selectedCellsContent.forEach(c => {
                 c.remove();
             })
-            refSelectedCells = [];
+            
             selectedCells = [];
             selectedCellsContent = [];
         }
@@ -336,6 +337,59 @@ window.addEventListener("keydown", (event) => {
     
 })*/
 closeModalButton.addEventListener("click", closeSelectionModal);
+
+function createTeam() {
+    const favoriteTeam = document.getElementById("favorite-team");
+    let teamSlots = [];
+
+    for(let i = 0; i < 4; i++) {
+        const teamMember = document.createElement("div");
+        teamMember.classList.add("cell", "selection-cell");
+
+        teamSlots.push(teamMember);
+    }
+
+
+
+    teamSlots.forEach(slot => { 
+        slot.addEventListener("click", () => { 
+            selectedTarget = slot;
+            openSelectionModal(
+                `Team Member ${teamSlots.indexOf(slot) + 1}`,
+                characters,
+                getCharacterImg,
+                (character) => {
+                    const previousSlot = teamSlots.find(slot =>
+                        slot !== selectedTarget &&
+                        slot.selectedCharacter?.name === character.name
+                    );
+
+                    if (previousSlot) {
+                        previousSlot.selectedCharacter = null;
+
+                        const previousContent = previousSlot.querySelector(".cell-content");
+
+                        if (previousContent !== null)
+                            previousContent.remove();
+                    }   
+
+                    displaySelection(
+                        selectedTarget,
+                        character,
+                        getCharacterImg
+                    );
+
+                    selectedTarget.selectedCharacter = character;
+                    selectedTarget = null;
+                }
+            )
+        });
+
+         favoriteTeam.appendChild(slot);
+    });
+
+    
+}
 
 
 function createSpecialChoices() {
@@ -554,7 +608,7 @@ function createSpecialChoices() {
 
 
 function downloadGrid() {
-    htmlToImage.toPng(mainPage)
+    htmlToImage.toPng(mainPage, { backgroundColor: "white" , width: mainPage.width})
         .then((dataUrl) => {
             const link = document.createElement("a");
 
@@ -573,6 +627,7 @@ downloadGridButton.addEventListener("click", downloadGrid);
 async function init() {
     await loadCharacters();
     createGrid();
+    createTeam();
     createSpecialChoices();
 }
 

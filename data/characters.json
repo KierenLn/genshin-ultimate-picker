@@ -1,5 +1,9 @@
 [
     {
+        "name": "Aether",
+        "skin": "Aether"
+    },
+    {
         "name": "Aino",
         "element": "Hydro",
         "weapon": "Claymore",
@@ -406,6 +410,10 @@
         "region": "Mondstadt"
     },
     {
+        "name": "Lumine",
+        "skin": "Lumine"
+    },
+    {
         "name": "Lynette",
         "element": "Anemo",
         "weapon": "Sword",
@@ -608,6 +616,41 @@
         "element": "Dendro",
         "weapon": "Bow",
         "region": "Sumeru"
+    },
+    {
+        "name": "Traveler",
+        "element": "Anemo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Traveler",
+        "element": "Geo",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Traveler",
+        "element": "Electro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Traveler",
+        "element": "Dendro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Traveler",
+        "element": "Hydro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Traveler",
+        "element": "Pyro",
+        "weapon": "Sword"
+    },
+    {
+        "name": "Traveler",
+        "element": "Cryo",
+        "weapon": "Sword"
     },
     {
         "name": "Varesa",
