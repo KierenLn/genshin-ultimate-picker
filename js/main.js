@@ -45,6 +45,20 @@ const regions = [
     "Snezhnaya"
 ];
 
+const fatui = [
+    "Pierro",
+    "Capitano",
+    "Dottore",
+    "Columbina",
+    "Arlecchino",
+    "Pulcinella",
+    "Scaramouche",
+    "Sandrone",
+    "Signora",
+    "Pantalone",
+    "Tartaglia"
+];
+
 //RECUPERATION DES DONNEES DES PERSONNAGES
 let characters = [];
 async function loadCharacters() {
@@ -167,7 +181,8 @@ function createGrid() {
 
                 let matchingChar = characters.filter(character => {
                     return(character.element === element &&
-                        character.weapon === weapon
+                        character.weapon === weapon || character.element.includes(element) &&
+                        character.weapon === weapon 
                     )
                 });
 
@@ -183,7 +198,7 @@ function createGrid() {
 
                 if(weapon === "Favorite") {
                     matchingChar = selectedCharacters.filter(character => {
-                        return character.element === element;
+                        return(character.element === element || character.element.includes(element));
                     }); 
                 }
 
@@ -473,6 +488,44 @@ function createSpecialChoices() {
 
     //#endregion
 
+    //#region REGION PREFEREE
+    const favRegionChoice = document.createElement("div");
+        
+
+    const favRegionChoiceTitle = document.createElement("h3");
+    favRegionChoiceTitle.classList.add("special-cell-title");
+    favRegionChoiceTitle.textContent = `Favorite Region`;
+    favRegionChoice.appendChild(favRegionChoiceTitle);
+
+    const favRegionChoiceCell = document.createElement("div");
+    favRegionChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favRegionChoice.appendChild(favRegionChoiceCell);
+
+    favRegionChoiceCell.addEventListener("click", () => {
+        selectedTarget = favRegionChoiceCell;
+
+        openSelectionModal(
+            "Favorite Region",
+            regions,
+            getRegionImg,
+            (region) => {
+                displaySelection(
+                    selectedTarget,
+                    region,
+                    getRegionImg
+                );
+
+                selectedTarget.selectedRegion = region;
+
+                selectedTarget = null;
+            }
+        );
+    });
+
+    specialChoices.appendChild(favRegionChoice);
+
+    //#endregion
+
     //#region ARCHON PREFERE
     const favArchonChoice = document.createElement("div");
 
@@ -525,41 +578,41 @@ function createSpecialChoices() {
 
     //#endregion
 
-    //#region REGION PREFEREE
-    const favRegionChoice = document.createElement("div");
+    //#region FATUI PREFERE
+    const favFatuiChoice = document.createElement("div");
+
+    const favFatuiChoiceTitle = document.createElement("h3");
+    favFatuiChoiceTitle.classList.add("special-cell-title");
+    favFatuiChoiceTitle.textContent = `Favorite Fatui`;
+    favFatuiChoice.appendChild(favFatuiChoiceTitle);
+
+    const favFatuiChoiceCell = document.createElement("div");
+    favFatuiChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favFatuiChoice.appendChild(favFatuiChoiceCell);
+
+    favFatuiChoiceCell.addEventListener("click", () => {
+        const matchingChar = fatui;
         
-
-    const favRegionChoiceTitle = document.createElement("h3");
-    favRegionChoiceTitle.classList.add("special-cell-title");
-    favRegionChoiceTitle.textContent = `Favorite Region`;
-    favRegionChoice.appendChild(favRegionChoiceTitle);
-
-    const favRegionChoiceCell = document.createElement("div");
-    favRegionChoiceCell.classList.add("special-choice", "cell", "selection-cell");
-    favRegionChoice.appendChild(favRegionChoiceCell);
-
-    favRegionChoiceCell.addEventListener("click", () => {
-        selectedTarget = favRegionChoiceCell;
+        selectedTarget = favFatuiChoiceCell;
 
         openSelectionModal(
-            "Favorite Region",
-            regions,
-            getRegionImg,
-            (region) => {
+            "Favorite Fatui",
+            matchingChar,
+            getCharacterImg,
+            (character) => {
                 displaySelection(
                     selectedTarget,
-                    region,
-                    getRegionImg
+                    character,
+                    getCharacterImg
                 );
 
-                selectedTarget.selectedRegion = region;
-
+                selectedTarget.selectedCharacter = character;
                 selectedTarget = null;
             }
         );
     });
 
-    specialChoices.appendChild(favRegionChoice);
+    specialChoices.appendChild(favFatuiChoice);
 
     //#endregion
 
@@ -576,9 +629,20 @@ function createSpecialChoices() {
     favSkinChoice.appendChild(favSkinChoiceCell);
 
     favSkinChoiceCell.addEventListener("click", () => {
-        const matchingChar = characters.filter(character => {
+        let matchingChar = characters.filter(character => {
             return character.skin;
         })
+        matchingChar.push("Aether", "Lumine");
+        matchingChar.sort((a, b) => {
+            const skinA = a.skin ?? a;
+            const skinB = b.skin ?? b;
+
+            if(skinA < skinB)
+                return -1;
+            if(skinA > skinB)
+                return 1;
+            return 0;
+        });
         selectedTarget = favSkinChoiceCell;
 
         openSelectionModal(
