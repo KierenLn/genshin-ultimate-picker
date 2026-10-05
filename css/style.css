@@ -20,6 +20,14 @@ body {
     padding: 10px;
 }
 
+#credits-link {
+    
+    font-size: 24px;
+    font-weight: normal;
+    color: #e4e4e4;
+    margin-top: 0px;
+}
+
 #download-grid {
     font-size: 18px;
     
