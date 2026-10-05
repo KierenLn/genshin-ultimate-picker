@@ -359,7 +359,7 @@ function createTeam() {
 
     for(let i = 0; i < 4; i++) {
         const teamMember = document.createElement("div");
-        teamMember.classList.add("cell", "selection-cell");
+        teamMember.classList.add("cell", "selection-cell", `cell-${i+1}`);
 
         teamSlots.push(teamMember);
     }
@@ -493,12 +493,12 @@ function createSpecialChoices() {
         
 
     const favRegionChoiceTitle = document.createElement("h3");
-    favRegionChoiceTitle.classList.add("special-cell-title");
+    favRegionChoiceTitle.classList.add("special-cell-title", "region-text");
     favRegionChoiceTitle.textContent = `Favorite Region`;
     favRegionChoice.appendChild(favRegionChoiceTitle);
 
     const favRegionChoiceCell = document.createElement("div");
-    favRegionChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favRegionChoiceCell.classList.add("special-choice", "cell", "selection-cell", "region-cell");
     favRegionChoice.appendChild(favRegionChoiceCell);
 
     favRegionChoiceCell.addEventListener("click", () => {
@@ -530,12 +530,12 @@ function createSpecialChoices() {
     const favArchonChoice = document.createElement("div");
 
     const favArchonChoiceTitle = document.createElement("h3");
-    favArchonChoiceTitle.classList.add("special-cell-title");
+    favArchonChoiceTitle.classList.add("special-cell-title", "archon-text");
     favArchonChoiceTitle.textContent = `Favorite Archon`;
     favArchonChoice.appendChild(favArchonChoiceTitle);
 
     const favArchonChoiceCell = document.createElement("div");
-    favArchonChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favArchonChoiceCell.classList.add("special-choice", "cell", "selection-cell", "archon-cell");
     favArchonChoice.appendChild(favArchonChoiceCell);
 
     favArchonChoiceCell.addEventListener("click", () => {
@@ -582,12 +582,12 @@ function createSpecialChoices() {
     const favFatuiChoice = document.createElement("div");
 
     const favFatuiChoiceTitle = document.createElement("h3");
-    favFatuiChoiceTitle.classList.add("special-cell-title");
+    favFatuiChoiceTitle.classList.add("special-cell-title", "fatui-text");
     favFatuiChoiceTitle.textContent = `Favorite Fatui`;
     favFatuiChoice.appendChild(favFatuiChoiceTitle);
 
     const favFatuiChoiceCell = document.createElement("div");
-    favFatuiChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favFatuiChoiceCell.classList.add("special-choice", "cell", "selection-cell", "fatui-cell");
     favFatuiChoice.appendChild(favFatuiChoiceCell);
 
     favFatuiChoiceCell.addEventListener("click", () => {
@@ -620,12 +620,12 @@ function createSpecialChoices() {
     const favSkinChoice = document.createElement("div");
 
     const favSkinChoiceTitle = document.createElement("h3");
-    favSkinChoiceTitle.classList.add("special-cell-title");
+    favSkinChoiceTitle.classList.add("special-cell-title", "skin-text");
     favSkinChoiceTitle.textContent = `Favorite Skin`;
     favSkinChoice.appendChild(favSkinChoiceTitle);
 
     const favSkinChoiceCell = document.createElement("div");
-    favSkinChoiceCell.classList.add("special-choice", "cell", "selection-cell");
+    favSkinChoiceCell.classList.add("special-choice", "cell", "selection-cell", "skin-cell");
     favSkinChoice.appendChild(favSkinChoiceCell);
 
     favSkinChoiceCell.addEventListener("click", () => {
@@ -671,16 +671,57 @@ function createSpecialChoices() {
 
 
 
-function downloadGrid() {
-    htmlToImage.toPng(mainPage, { backgroundColor: "white" , width: mainPage.width})
-        .then((dataUrl) => {
-            const link = document.createElement("a");
+async function downloadGrid() {   
+    //RECUPERE TOUTE LA PAGE
+    const dataUrl = await htmlToImage.toPng(document.body);
 
-            link.download = "genshin-picker.png";
-            link.href = dataUrl;
+    //ON CREE UNE IMAGE DE TOUTE LA PAGE AVEC CE QU'ON A AU DESSUS
+    const image = new Image();
+    image.src = dataUrl;
 
-            link.click();
-        });
+    //ON ATTEND QUE L'IMAGE SOIT CHARGEE
+    await image.decode();
+
+    //ON RECUPERE COORDONNES ET TAILLE DE MAIN, LA ZONE AVEC TOUT LES PERSOS
+    const rect = mainPage.getBoundingClientRect();
+
+    //ON PREND EN COMPTE LE SCROLLING DANS LA PAGE POUR LES COORDONNEES DE MAIN
+    const mainX = rect.left + window.scrollX;
+    const mainY = rect.top + window.scrollY;
+
+    //ON CREE UN CANVAS (élément basique pour dessiner dessus) DE LA TAILLE DE MAIN
+    const canvas = document.createElement("canvas");
+    canvas.width = mainPage.offsetWidth;
+    canvas.height = mainPage.offsetHeight;
+
+    //CE QUI PERMET DE DESSINER
+    const ctx = canvas.getContext("2d");
+
+    //ON DESSINE L'IMAGE
+    ctx.drawImage(
+        image,  //IMAGE
+
+        //CE QU'ON VEUT RECUPERER DANS L'IMAGE
+        mainX,  //COORDONNEES DE MAIN SUR X
+        mainY,  //COORDONNEES DE MAIN SUR Y
+        mainPage.offsetWidth,   //DIMENSIONS DE MAIN POUR QUE LE GRAPH FASSE LA BONNE TAILLE
+        mainPage.offsetHeight,
+
+        //COORDONNES SUR LE CANVAS
+        0,
+        0,
+        mainPage.offsetWidth,   //MEME DIMENSIONS QUE MAIN
+        mainPage.offsetHeight
+    );
+
+    //CONVERSION CANVAS EN IMAGE
+    const finalDataUrl = canvas.toDataURL("image/png");
+
+    //ON EXPORTE L'IMAGE CREEE
+    const link = document.createElement("a");
+    link.download = "genshin-picker.png";
+    link.href = finalDataUrl;
+    link.click();
 }
 
 downloadGridButton.addEventListener("click", downloadGrid);

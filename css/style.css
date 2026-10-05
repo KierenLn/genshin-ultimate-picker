@@ -9,10 +9,14 @@ html, body, button {
     cursor: url("../img/UI/cursor.cur"), pointer;
 }
 
-#main {
-    background-color: white;
-    min-width: 1400px;
+body { 
+    background-image: url("../img/Background.jpg");
+    background-size: cover;
+    background-position: center;
+}
 
+#main {
+    min-width: 1400px;
     padding: 10px;
 }
 
@@ -75,6 +79,7 @@ html, body, button {
     font-size: 20px;
 
     margin-bottom: 10px;
+
 }
 
 .header-img {
@@ -94,7 +99,7 @@ html, body, button {
 .cell {
     min-height: 160px;
     min-width: 160px;
-    border: 3px solid #ccc;
+    border: 3px solid #aca3e6;
 
     display: flex;
     align-items: center;
@@ -102,7 +107,11 @@ html, body, button {
 
     border-radius: 10px;
 
-    background-color: white;
+    background-color: #d9d5f3;
+}
+
+#out-grid .cell {
+    border: 3px solid #4c65aa;
 }
 
 .cell-img {
@@ -217,7 +226,7 @@ html, body, button {
     background-color: #fa895c;
 }
 .selected-cell.pyro-cell{
-    border: 5px outset #ed4f45;
+    border: 5px outset #ed4f45 !important; 
 }
 
 .hydro-cell{
@@ -227,7 +236,7 @@ html, body, button {
     background-color: #4e8ef5;
 }
 .selected-cell.hydro-cell{
-    border: 5px outset #4088ff;
+    border: 5px outset #4088ff !important;
 }
 
 .dendro-cell{
@@ -237,7 +246,7 @@ html, body, button {
     background-color: #8dd46e;
 }
 .selected-cell.dendro-cell{
-    border: 5px outset #7bb42d;
+    border: 5px outset #7bb42d !important;
 }
 
 .electro-cell{
@@ -247,7 +256,7 @@ html, body, button {
     background-color: #ad7ed6;
 }
 .selected-cell.electro-cell{
-    border: 5px outset #d376f0;
+    border: 5px outset #d376f0 !important;
 }
 
 .anemo-cell{
@@ -257,7 +266,7 @@ html, body, button {
     background-color: #67dba5;
 }
 .selected-cell.anemo-cell{
-    border: 5px outset #33ccb3;
+    border: 5px outset #33ccb3 !important;
 }
 
 .cryo-cell{
@@ -267,17 +276,17 @@ html, body, button {
     background-color: #94eaf2;
 }
 .selected-cell.cryo-cell{
-    border: 5px outset #98c8e8;
+    border: 5px outset #98c8e8 !important;
 }
 
 .geo-cell{
-    background-color: #f5e78e;
+    background-color: #f5d48e;
 }
 .geo-cell:hover{
-    background-color: #f2e068;
+    background-color: #e6c57f;
 }
 .selected-cell.geo-cell{
-    border: 5px outset #cfa726;
+    border: 5px outset #cfa726 !important;
 }
 
 .favorite-cell{
@@ -287,8 +296,10 @@ html, body, button {
     background: linear-gradient(#e2a7d2, #a5e8fd);
 }
 .selected-cell.favorite-cell{
-    border-image: linear-gradient(to bottom right, #f986d1, #54a3f8) 1;
-    border-width: 5px;
+    background: linear-gradient(#fac5c9, #b7e8ff) padding-box,
+                linear-gradient(to bottom right, #f986d1, #54a3f8) border-box;
+    border-radius: 10px;
+    border: 5px solid transparent;
 }
 
 .nod-krai-cell {
@@ -297,14 +308,97 @@ html, body, button {
 .nod-krai-cell:hover {
     background-color: #8e86ad;
 }
+.selected-cell.nod-krai-cell {
+    border: 5px outset #d8b2fa !important; 
+}
 
+.fatui-cell {
+    background-color: #cf4d3c;
+}
+.fatui-cell:hover {
+    background-color: #c2493a;
+}
+.selected-cell.fatui-cell {
+    border: 5px outset #5c1912 !important;
+}
+
+.region-cell {
+    background-color: #9b7b60;
+}
+.region-cell:hover {
+    background-color: #8f7158;
+}
+.selected-cell.region-cell {
+    border: 5px outset #7c5b40 !important;
+}
+
+.archon-cell {
+    background-color: #ffe367;
+}
+.archon-cell:hover {
+    background-color: rgb(250, 211, 85);
+}
+.selected-cell.archon-cell {
+    border: 5px outset #948338 !important;
+}
+
+.skin-cell {
+    background-color: #1f4980;
+}
+.skin-cell:hover {
+    background-color: #0c3872;
+}
+.selected-cell.skin-cell {
+    border: 5px outset #1f416e !important;
+}
+
+.cell-1{
+    background-color: #5cb3fa;
+}
+.cell-1:hover{
+    background-color: #3e9df5;
+}
+.selected-cell.cell-1{
+    border: 5px outset #98befc !important;
+    background-color: #bad8f0;
+}
+.cell-2{
+    background-color: #fc564a;
+}
+.cell-2:hover{
+    background-color: #f54434;
+}
+.selected-cell.cell-2{
+    border: 5px outset #f18b83 !important;
+    background-color: #fab2ad;
+}
+.cell-3{
+    background-color: #3ac579;
+}
+.cell-3:hover{
+    background-color: #35b46e;
+}
+.selected-cell.cell-3{
+    border: 5px outset #508d5f !important;
+    background-color: #9decae;
+}
+.cell-4{
+    background-color: #ffcb20;
+}
+.cell-4:hover{
+    background-color: #f3b90a;
+}
+.selected-cell.cell-4{
+    border: 5px outset #ebca6a !important;
+    background-color: #fff89c;
+}
 
 .pyro-text {
-    color: #ed4f45;
+    color: #fa802e;
 }
 
 .hydro-text{
-    color: #4088ff;
+    color: #67a1fd;
 }
 
 .dendro-text{
@@ -312,7 +406,7 @@ html, body, button {
 }
 
 .electro-text {
-    color: #d376f0;
+    color: #9e2dc0;
 }
 
 .anemo-text {
@@ -327,7 +421,27 @@ html, body, button {
     color: #cfa726;
 }
 
+.team-text {
+    color: #eb9089;
+}
+
 .nod-krai-text {
     color: #e8cefe;
+}
+
+.region-text {
+    color: #b47e4c;
+}
+
+.archon-text {
+    color: #ffc60c;
+}
+
+.fatui-text {
+    color: #680202;
+}
+
+.skin-text {
+    color: #024296;
 }
 
