@@ -2,6 +2,11 @@ const mainPage = document.getElementById("main");
 const grid = document.getElementById("main-grid");
 const outGrid = document.getElementById("out-grid");
 
+const STORAGE_KEY = "genshin-picker-save";
+
+const favoriteTeam = document.getElementById("favorite-team");
+const specialChoices = document.getElementById("special-choices");
+
 //VAR POUR LA FENETRE MODALE
 const modal = document.getElementById("selection-modal");
 const modalContent = document.getElementById("modal-content");
@@ -10,6 +15,7 @@ const characterList = document.getElementById("character-list");
 const closeModalButton = document.getElementById("close-modal");
 
 const downloadGridButton = document.getElementById("download-grid");
+const resetGridButton = document.getElementById("reset-grid");
 
 let selectedTarget = null;
 
@@ -323,6 +329,7 @@ function openSelectionModal(title, options, getImg, onSelect) {
 
         optionElement.addEventListener("click", () => {
             onSelect(option);
+            saveChoices();
             closeSelectionModal();
         })
 
@@ -726,6 +733,207 @@ async function downloadGrid() {
 
 downloadGridButton.addEventListener("click", downloadGrid);
 
+function clearCell(cell) {
+    cell.querySelector(".cell-content")?.remove();
+
+    cell.selectedCharacter = null;
+    cell.selectedRegion = null;
+
+    cell.classList.remove("selected-cell");
+}
+
+
+function clearAll() { 
+    grid.querySelectorAll(".selection-cell").forEach(cell => {
+        clearCell(cell);
+    });
+
+    specialChoices.querySelectorAll(".selection-cell").forEach(cell => {
+        clearCell(cell);
+    });
+
+    favoriteTeam.querySelectorAll(".selection-cell").forEach(cell => {
+        clearCell(cell);
+    });
+
+    localStorage.removeItem(STORAGE_KEY);
+}
+
+resetGridButton.addEventListener("click", clearAll);
+
+
+function saveChoices() {
+    const data = {
+        grid: [],
+        team: [],
+        special: []
+    };
+
+    grid.querySelectorAll(".selection-cell").forEach(cell => {
+        if(!cell.selectedCharacter)
+            return;
+
+        data.grid.push({
+            element: cell.dataset.element,
+            weapon: cell.dataset.weapon,
+            character: cell.selectedCharacter.name
+        });
+    });
+
+
+    favoriteTeam.querySelectorAll(".selection-cell").forEach(cell => {
+
+        data.team.push(
+            cell.selectedCharacter?.name ?? null
+        );
+    });
+
+    specialChoices.querySelectorAll(".selection-cell").forEach(cell => {
+        const title = cell.parentNode.querySelector(".special-cell-title");
+
+        if(!title)
+            return;
+
+        const value = 
+            cell.selectedRegion ??
+            cell.selectedCharacter?.name ??
+            cell.selectedCharacter ??
+            null;
+
+        if(value !== null) {
+            data.special.push({
+                title: title.textContent,
+                value: value
+            });
+        };
+    });
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function loadSavedChoices() {
+    const savedData = localStorage.getItem(STORAGE_KEY);
+
+    if(!savedData)
+        return
+
+    const data = JSON.parse(savedData);
+
+    for(const savedCell of data.grid ?? []) {
+        const cell = [...grid.querySelectorAll(".selection-cell")].find(cell =>
+            cell.dataset.element === savedCell.element &&
+            cell.dataset.weapon === savedCell.weapon
+        );
+
+        if(!cell)
+            continue;
+
+        const character = characters.find(
+            character => character.name === savedCell.character
+        );
+
+        if(!character)
+            continue;
+
+        displaySelection(
+            cell,
+            character,
+            getCharacterImg
+        );
+
+        cell.selectedCharacter = character;
+        cell.classList.add("selected-cell");
+    }
+
+    const teamSlots = favoriteTeam.querySelectorAll(".selection-cell");
+
+    data.team?.forEach((characterName, index) => {
+        if(!characterName)
+            return;
+
+        const slot = teamSlots[index];
+
+        if(!slot)
+            return;
+
+        const character = characters.find(character =>
+            character.name === characterName
+        );
+
+        if(!character)
+            return;
+
+        displaySelection(
+            slot,
+            character,
+            getCharacterImg
+        );
+
+        slot.selectedCharacter = character;
+        slot.classList.add("selected-cell");
+
+
+        for(const savedSpecial of data.special?? []) {
+            const cell = [...specialChoices.querySelectorAll(".selection-cell")].find(cell => {
+                const title = cell.parentElement.querySelector(".special-cell-title");
+
+                return title?.textContent === savedSpecial.title;
+            })
+
+            if(!cell)
+                continue;
+
+            if (savedSpecial.title === "Favorite Region") {
+
+                displaySelection(
+                    cell,
+                    savedSpecial.value,
+                    getRegionImg
+                );
+
+                cell.selectedRegion = savedSpecial.value;
+                cell.classList.add("selected-cell");
+
+                continue;
+            };
+
+            if (savedSpecial.title === "Favorite Skin") {
+
+                const character = characters.find(
+                    character => character.name === savedSpecial.value
+                ) ?? savedSpecial.value;
+
+                displaySelection(
+                    cell,
+                    character,
+                    getSkinImg
+                );
+
+                cell.selectedCharacter = character;
+                cell.classList.add("selected-cell");
+
+                continue;
+            };
+
+            const character = characters.find(
+                character => character.name === savedSpecial.value
+            );
+
+            if (!character) 
+                continue;
+
+            displaySelection(
+                cell,
+                character,
+                getCharacterImg
+            );
+
+            cell.selectedCharacter = character;
+            cell.classList.add("selected-cell");
+        }
+    });
+}
+
 
 
 //INITIALISATION : RECUPERATION DES DONNEES DES PERSONNAGES ET CREATION DE LA GRILLE
@@ -734,6 +942,7 @@ async function init() {
     createGrid();
     createTeam();
     createSpecialChoices();
+    loadSavedChoices();
 }
 
 init();

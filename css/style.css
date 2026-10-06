@@ -27,7 +27,7 @@ body {
     margin-top: 0px;
 }
 
-#download-grid {
+.footer-button {
     font-size: 18px;
     
     border-radius: 10px;
@@ -39,7 +39,7 @@ body {
     color: white;
 }
 
-#download-grid:hover {
+.footer-button:hover {
     background-color: #485365;
 }
 
