@@ -15,8 +15,6 @@ body {
     background-position: center;
 }
 
-
-
 #main {
     min-width: 1400px;
     padding: 10px;
@@ -459,15 +457,3 @@ body {
     color: #024296;
 }
 
-
-
-@media (max-width: 700px) {
-    #main {
-        min-width: 0;
-        overflow-x: auto;
-    }
-
-    #main-grid {
-        width: max-content;
-    }
-}
