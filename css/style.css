@@ -15,16 +15,7 @@ body {
     background-position: center;
 }
 
-@media (max-width: 700px) {
-    #main {
-        min-width: 0;
-        overflow-x: auto;
-    }
 
-    #main-grid {
-        width: max-content;
-    }
-}
 
 #main {
     min-width: 1400px;
@@ -468,3 +459,15 @@ body {
     color: #024296;
 }
 
+
+
+@media (max-width: 700px) {
+    #main {
+        min-width: 0;
+        overflow-x: auto;
+    }
+
+    #main-grid {
+        width: max-content;
+    }
+}
