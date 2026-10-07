@@ -263,9 +263,13 @@ function displaySelection(target, value, getImg) {
     {
         if(target.parentNode.id === "main-grid" && target.id !== "favFavorite") {
             let selectedCells = document.querySelectorAll(".selected-cell.favorite-cell");
+
+            console.log(selectedCells)
         
             let selectedCellsContent = [];
             selectedCells.forEach(c => {
+                
+                console.log(`target = ${target.selectedCharacter?.name}`);
                 if(c.selectedCharacter.name === target.selectedCharacter.name && c.selectedCharacter.name !== value.name)
                 {
                     selectedCellsContent.push(c.querySelector(".cell-content"));
@@ -275,6 +279,11 @@ function displaySelection(target, value, getImg) {
 
             selectedCellsContent.forEach(c => {
                 c.remove();
+            })
+
+            selectedCells.forEach(c => {
+                if(!c.querySelector(".cell-content"))
+                    c.selectedCharacter = null;
             })
             
             selectedCells = [];
