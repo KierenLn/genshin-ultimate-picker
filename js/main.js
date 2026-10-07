@@ -178,6 +178,10 @@ function createGrid() {
             cell.dataset.weapon = weapon;
             cell.selectedCharacter = null;
 
+            if(cell.dataset.element === "Favorite" && cell.dataset.weapon === "Favorite")
+                cell.setAttribute("id", "favFavorite");
+
+
             //EVENT QUAND ON CLIQUE SUR UNE CASE : OUVERTURE DE LA FENETRE MODALE AVEC LES PERSOS CORRESPONDANTS
             cell.addEventListener("click", () => {
                 const element = cell.dataset.element;
@@ -257,7 +261,7 @@ function displaySelection(target, value, getImg) {
     //ON VIDE EGALEMENT LA CASE FAVORITE SI LE PERSO N'EST PLUS SELECTIONNE DANS LA GRID
     if(previousContent !== null)
     {
-        if(target.parentNode.id === "main-grid") {
+        if(target.parentNode.id === "main-grid" && target.id !== "favFavorite") {
             let selectedCells = document.querySelectorAll(".selected-cell.favorite-cell");
         
             let selectedCellsContent = [];
