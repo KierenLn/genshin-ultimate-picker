@@ -308,6 +308,11 @@ body {
     border-radius: 10px;
     border: 5px solid transparent;
 }
+.selected-cell.favorite-cell:hover{
+    background: linear-gradient(#e2a7d2, #a5e8fd) padding-box,
+                linear-gradient(to bottom right, #f986d1, #54a3f8) border-box;
+    
+}
 
 .nod-krai-cell {
     background-color: #a299b8;
