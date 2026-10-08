@@ -255,41 +255,69 @@ function getSkinImg(character) {
 }
 
 function displaySelection(target, value, getImg) {
-    //ON SUPPRIME SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
+    //ON REGARDE SI UN ELEMENT A DEJA ETE SELECTIONNE DANS LA CASE, SI OUI ON LE SUPPRIME
     const previousContent = target.querySelector(".cell-content");
+
 
     //ON VIDE EGALEMENT LA CASE FAVORITE SI LE PERSO N'EST PLUS SELECTIONNE DANS LA GRID
     if(previousContent !== null)
     {
+        const previousChar = target.selectedCharacter;
+        previousContent.remove();
+        target.selectedCharacter = null;
+
+
         if(target.parentNode.id === "main-grid" && target.id !== "favFavorite") {
-            let selectedCells = document.querySelectorAll(".selected-cell.favorite-cell");
+            if(!isCharacterInGrid(previousChar)) {
+                let selectedCells = document.querySelectorAll(".selected-cell.favorite-cell");
         
-            let selectedCellsContent = [];
-            selectedCells.forEach(c => {
+                let selectedCellsContent = [];
+                selectedCells.forEach(c => {
 
-                if(c.selectedCharacter.name === target.selectedCharacter.name && c.selectedCharacter.name !== value.name)
-                {
-                    selectedCellsContent.push(c.querySelector(".cell-content"));
-                    c.classList.remove("selected-cell");
-                }
-            });
+                    if(c.selectedCharacter?.name === previousChar.name)
+                    {
+                        selectedCellsContent.push(c.querySelector(".cell-content"));
+                        c.classList.remove("selected-cell");
+                    }
+                });
 
-            selectedCellsContent.forEach(c => {
-                c.remove();
-            })
+                selectedCellsContent.forEach(c => {
+                    c.remove();
+                })
 
-            selectedCells.forEach(c => {
-                if(!c.querySelector(".cell-content"))
-                    c.selectedCharacter = null;
-            })
+                selectedCells.forEach(c => {
+                    if(!c.querySelector(".cell-content"))
+                        c.selectedCharacter = null;
+                })
             
-            selectedCells = [];
-            selectedCellsContent = [];
+                selectedCells = [];
+                selectedCellsContent = [];
+                }
         }
         
         
+        if(target.classList.contains("favorite-cell") && target.id !== "favFavorite")
+        {
+            const favoriteCells = document.querySelectorAll(".selected-cell.favorite-cell:not(#favFavorite)");
 
-        previousContent.remove();
+            const stillInFavorite = [...favoriteCells].some(c =>
+                c.selectedCharacter?.name === previousChar.name
+            );
+
+            if(!stillInFavorite)
+            {
+                const favFavorite = document.getElementById("favFavorite");
+                const favFavoriteContent = favFavorite.querySelector(".cell-content");
+
+                if(favFavoriteContent)
+                {
+                    favFavoriteContent.remove();
+                    favFavorite.classList.remove("selected-cell");
+                    favFavorite.selectedCharacter = null;
+                }
+            }
+        }
+        
     }
 
             
@@ -306,6 +334,14 @@ function displaySelection(target, value, getImg) {
     target.appendChild(cellContent);
 
     target.classList.add("selected-cell");
+    target.selectedCharacter = value;
+}
+
+function isCharacterInGrid(character) {
+    const gridCells = grid.querySelectorAll(".cell:not(.favorite-cell)");
+    return [...gridCells].some(cell =>
+        cell.selectedCharacter?.name === character.name
+    );
 }
 
 
