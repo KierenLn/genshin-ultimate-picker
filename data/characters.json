@@ -478,7 +478,8 @@
         "name": "Nilou",
         "element": "Hydro",
         "weapon": "Sword",
-        "region": "Sumeru"
+        "region": "Sumeru",
+        "skin": "Nilou"
     },
     {
         "name": "Ningguang",
