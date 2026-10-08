@@ -361,16 +361,7 @@ window.addEventListener("keydown", (event) => {
     if(event.key === "Escape" && !modal.classList.contains("hidden"))  
         closeSelectionModal();
 });
-/*modal.addEventListener("click", (event) => {
-    const clickTarget = event.target;
 
-    if(clickTarget !== modalContent && clickTarget !== modalTitle && clickTarget !== closeModalButton)
-    {
-        closeSelectionModal();
-        console.log("not modal");
-    }
-    
-})*/
 closeModalButton.addEventListener("click", closeSelectionModal);
 
 function createTeam() {
