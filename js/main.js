@@ -683,8 +683,10 @@ function createSpecialChoices() {
 
 
 async function downloadGrid() {   
-    //RECUPERE TOUTE LA PAGE
-    const dataUrl = await htmlToImage.toPng(document.body);
+    /*//RECUPERE TOUTE LA PAGE
+    const dataUrl = await htmlToImage.toPng(document.body, {
+        pixelRation: 1
+    });
 
     //ON CREE UNE IMAGE DE TOUTE LA PAGE AVEC CE QU'ON A AU DESSUS
     const image = new Image();
@@ -700,6 +702,14 @@ async function downloadGrid() {
     const mainX = rect.left + window.scrollX;
     const mainY = rect.top + window.scrollY;
 
+
+    const pageWidth = document.documentElement.scrollWidth;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    const scaleX = image.width / pageWidth;
+    const scaleY = image.height / pageHeight;
+
+
     //ON CREE UN CANVAS (élément basique pour dessiner dessus) DE LA TAILLE DE MAIN
     const canvas = document.createElement("canvas");
     canvas.width = mainPage.offsetWidth;
@@ -713,8 +723,8 @@ async function downloadGrid() {
         image,  //IMAGE
 
         //CE QU'ON VEUT RECUPERER DANS L'IMAGE
-        mainX,  //COORDONNEES DE MAIN SUR X
-        mainY,  //COORDONNEES DE MAIN SUR Y
+        mainX * scaleX,  //COORDONNEES DE MAIN SUR X
+        mainY * scaleY,  //COORDONNEES DE MAIN SUR Y
         mainPage.offsetWidth,   //DIMENSIONS DE MAIN POUR QUE LE GRAPH FASSE LA BONNE TAILLE
         mainPage.offsetHeight,
 
@@ -732,6 +742,36 @@ async function downloadGrid() {
     const link = document.createElement("a");
     link.download = "genshin-picker.png";
     link.href = finalDataUrl;
+    link.click();*/
+
+    // On récupère les propriétés du background du body
+    const bodyStyle = getComputedStyle(document.body);
+
+    // On sauvegarde le background actuel de #main
+    const oldBackgroundImage = mainPage.style.backgroundImage;
+    const oldBackgroundSize = mainPage.style.backgroundSize;
+    const oldBackgroundPosition = mainPage.style.backgroundPosition;
+    const oldBackgroundRepeat = mainPage.style.backgroundRepeat;
+
+    // On copie le background du body sur #main
+    mainPage.style.backgroundImage = bodyStyle.backgroundImage;
+    mainPage.style.backgroundSize = "cover";
+    mainPage.style.backgroundPosition = "center";
+    mainPage.style.backgroundRepeat = "no-repeat";
+
+    // Capture directe de #main
+    const dataUrl = await htmlToImage.toPng(mainPage);
+
+    // On remet #main comme avant
+    mainPage.style.backgroundImage = oldBackgroundImage;
+    mainPage.style.backgroundSize = oldBackgroundSize;
+    mainPage.style.backgroundPosition = oldBackgroundPosition;
+    mainPage.style.backgroundRepeat = oldBackgroundRepeat;
+
+    // Export
+    const link = document.createElement("a");
+    link.download = "genshin-picker.png";
+    link.href = dataUrl;
     link.click();
 }
 
