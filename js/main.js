@@ -683,71 +683,7 @@ function createSpecialChoices() {
 
 
 async function downloadGrid() {   
-    /*//RECUPERE TOUTE LA PAGE
-    const dataUrl = await htmlToImage.toPng(document.body, {
-        pixelRation: 1
-    });
-
-    //ON CREE UNE IMAGE DE TOUTE LA PAGE AVEC CE QU'ON A AU DESSUS
-    const image = new Image();
-    image.src = dataUrl;
-
-    //ON ATTEND QUE L'IMAGE SOIT CHARGEE
-    await image.decode();
-
-    //ON RECUPERE COORDONNES ET TAILLE DE MAIN, LA ZONE AVEC TOUT LES PERSOS
-    const rect = mainPage.getBoundingClientRect();
-
-    //ON PREND EN COMPTE LE SCROLLING DANS LA PAGE POUR LES COORDONNEES DE MAIN
-    const mainX = rect.left + window.scrollX;
-    const mainY = rect.top + window.scrollY;
-
-
-    const pageWidth = document.documentElement.scrollWidth;
-    const pageHeight = document.documentElement.scrollHeight;
-
-    const scaleX = image.width / pageWidth;
-    const scaleY = image.height / pageHeight;
-
-
-    //ON CREE UN CANVAS (élément basique pour dessiner dessus) DE LA TAILLE DE MAIN
-    const canvas = document.createElement("canvas");
-    canvas.width = mainPage.offsetWidth;
-    canvas.height = mainPage.offsetHeight;
-
-    //CE QUI PERMET DE DESSINER
-    const ctx = canvas.getContext("2d");
-
-    //ON DESSINE L'IMAGE
-    ctx.drawImage(
-        image,  //IMAGE
-
-        //CE QU'ON VEUT RECUPERER DANS L'IMAGE
-        mainX * scaleX,  //COORDONNEES DE MAIN SUR X
-        mainY * scaleY,  //COORDONNEES DE MAIN SUR Y
-        mainPage.offsetWidth,   //DIMENSIONS DE MAIN POUR QUE LE GRAPH FASSE LA BONNE TAILLE
-        mainPage.offsetHeight,
-
-        //COORDONNES SUR LE CANVAS
-        0,
-        0,
-        mainPage.offsetWidth,   //MEME DIMENSIONS QUE MAIN
-        mainPage.offsetHeight
-    );
-
-    //CONVERSION CANVAS EN IMAGE
-    const finalDataUrl = canvas.toDataURL("image/png");
-
-    //ON EXPORTE L'IMAGE CREEE
-    const link = document.createElement("a");
-    link.download = "genshin-picker.png";
-    link.href = finalDataUrl;
-    link.click();*/
-
-    // =========================
-    // 1. CAPTURE DE #main
-    // =========================
-
+    // ON RECUPERE MAIN ET ON CREEE UNE IMAGE
     const dataUrl = await htmlToImage.toPng(mainPage);
 
     const mainImage = new Image();
@@ -756,34 +692,25 @@ async function downloadGrid() {
     await mainImage.decode();
 
 
-    // =========================
-    // 2. DIMENSIONS DE #main
-    // =========================
-
+    // ON RECUPERE LES DIMENSIONS DE MAIN
     const mainWidth = mainPage.offsetWidth;
     const mainHeight = mainPage.offsetHeight;
 
 
-    // =========================
-    // 3. BACKGROUND DU BODY
-    // =========================
-
+    // ON RECUPERE LE BACKGROUND DU BODY
     const bodyStyle = getComputedStyle(document.body);
-
     const backgroundUrl = bodyStyle.backgroundImage
         .replace(/^url\(["']?/, "")
         .replace(/["']?\)$/, "");
 
+    // ON CREEE UNE IMAGE DU BACKGROUND
     const background = new Image();
     background.src = backgroundUrl;
 
     await background.decode();
 
 
-    // =========================
-    // 4. CREATION DU CANVAS
-    // =========================
-
+    // ON CREEE UN CANVAS AVEC LES DIMENSIONS DE MAIN
     const canvas = document.createElement("canvas");
 
     canvas.width = mainWidth;
@@ -792,34 +719,25 @@ async function downloadGrid() {
     const ctx = canvas.getContext("2d");
 
 
-    // =========================
-    // 5. BACKGROUND-SIZE: COVER
-    // =========================
-
+    // DIMENSIONS DE BASE DU BACKGROUND
     const imageWidth = background.naturalWidth;
     const imageHeight = background.naturalHeight;
 
-    const scale = Math.max(
+    
+    const scale = Math.max( 
         mainWidth / imageWidth,
         mainHeight / imageHeight
     );
 
+    // ON CALCULE COMBIEN DOIT FAIRE LE BACKGROUND POUR RENTRER DANS L'IMAGE
     const drawWidth = imageWidth * scale;
     const drawHeight = imageHeight * scale;
 
-
-    // =========================
-    // 6. BACKGROUND-POSITION: CENTER
-    // =========================
-
+    // ON POSITIONNE LE BACKGROUND AU CENTRE POUR CROP EQUITABLEMENT
     const x = (mainWidth - drawWidth) / 2;
     const y = (mainHeight - drawHeight) / 2;
 
-
-    // =========================
-    // 7. DESSIN DU BACKGROUND
-    // =========================
-
+    // ON DESSINE LE BACKGROUND
     ctx.drawImage(
         background,
         x,
@@ -829,10 +747,7 @@ async function downloadGrid() {
     );
 
 
-    // =========================
-    // 8. DESSIN DE #main
-    // =========================
-
+    // ON DESSINE MAIN
     ctx.drawImage(
         mainImage,
         0,
@@ -842,10 +757,7 @@ async function downloadGrid() {
     );
 
 
-    // =========================
-    // 9. EXPORT
-    // =========================
-
+    // ON EXPORTE LE CANVAS
     const finalDataUrl = canvas.toDataURL("image/png");
 
     const link = document.createElement("a");
