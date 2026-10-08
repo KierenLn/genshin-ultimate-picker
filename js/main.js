@@ -744,34 +744,115 @@ async function downloadGrid() {
     link.href = finalDataUrl;
     link.click();*/
 
-    // On récupère les propriétés du background du body
-    const bodyStyle = getComputedStyle(document.body);
+    // =========================
+    // 1. CAPTURE DE #main
+    // =========================
 
-    // On sauvegarde le background actuel de #main
-    const oldBackgroundImage = mainPage.style.backgroundImage;
-    const oldBackgroundSize = mainPage.style.backgroundSize;
-    const oldBackgroundPosition = mainPage.style.backgroundPosition;
-    const oldBackgroundRepeat = mainPage.style.backgroundRepeat;
-
-    // On copie le background du body sur #main
-    mainPage.style.backgroundImage = bodyStyle.backgroundImage;
-    mainPage.style.backgroundSize = "cover";
-    mainPage.style.backgroundPosition = "center";
-    mainPage.style.backgroundRepeat = "no-repeat";
-
-    // Capture directe de #main
     const dataUrl = await htmlToImage.toPng(mainPage);
 
-    // On remet #main comme avant
-    mainPage.style.backgroundImage = oldBackgroundImage;
-    mainPage.style.backgroundSize = oldBackgroundSize;
-    mainPage.style.backgroundPosition = oldBackgroundPosition;
-    mainPage.style.backgroundRepeat = oldBackgroundRepeat;
+    const mainImage = new Image();
+    mainImage.src = dataUrl;
 
-    // Export
+    await mainImage.decode();
+
+
+    // =========================
+    // 2. DIMENSIONS DE #main
+    // =========================
+
+    const mainWidth = mainPage.offsetWidth;
+    const mainHeight = mainPage.offsetHeight;
+
+
+    // =========================
+    // 3. BACKGROUND DU BODY
+    // =========================
+
+    const bodyStyle = getComputedStyle(document.body);
+
+    const backgroundUrl = bodyStyle.backgroundImage
+        .replace(/^url\(["']?/, "")
+        .replace(/["']?\)$/, "");
+
+    const background = new Image();
+    background.src = backgroundUrl;
+
+    await background.decode();
+
+
+    // =========================
+    // 4. CREATION DU CANVAS
+    // =========================
+
+    const canvas = document.createElement("canvas");
+
+    canvas.width = mainWidth;
+    canvas.height = mainHeight;
+
+    const ctx = canvas.getContext("2d");
+
+
+    // =========================
+    // 5. BACKGROUND-SIZE: COVER
+    // =========================
+
+    const imageWidth = background.naturalWidth;
+    const imageHeight = background.naturalHeight;
+
+    const scale = Math.max(
+        mainWidth / imageWidth,
+        mainHeight / imageHeight
+    );
+
+    const drawWidth = imageWidth * scale;
+    const drawHeight = imageHeight * scale;
+
+
+    // =========================
+    // 6. BACKGROUND-POSITION: CENTER
+    // =========================
+
+    const x = (mainWidth - drawWidth) / 2;
+    const y = (mainHeight - drawHeight) / 2;
+
+
+    // =========================
+    // 7. DESSIN DU BACKGROUND
+    // =========================
+
+    ctx.drawImage(
+        background,
+        x,
+        y,
+        drawWidth,
+        drawHeight
+    );
+
+
+    // =========================
+    // 8. DESSIN DE #main
+    // =========================
+
+    ctx.drawImage(
+        mainImage,
+        0,
+        0,
+        mainWidth,
+        mainHeight
+    );
+
+
+    // =========================
+    // 9. EXPORT
+    // =========================
+
+    const finalDataUrl = canvas.toDataURL("image/png");
+
     const link = document.createElement("a");
+
     link.download = "genshin-picker.png";
-    link.href = dataUrl;
+    link.href = finalDataUrl;
+
     link.click();
 }
 
