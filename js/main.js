@@ -263,13 +263,10 @@ function displaySelection(target, value, getImg) {
     {
         if(target.parentNode.id === "main-grid" && target.id !== "favFavorite") {
             let selectedCells = document.querySelectorAll(".selected-cell.favorite-cell");
-
-            console.log(selectedCells)
         
             let selectedCellsContent = [];
             selectedCells.forEach(c => {
-                
-                console.log(`target = ${target.selectedCharacter?.name}`);
+
                 if(c.selectedCharacter.name === target.selectedCharacter.name && c.selectedCharacter.name !== value.name)
                 {
                     selectedCellsContent.push(c.querySelector(".cell-content"));
@@ -908,9 +905,9 @@ function loadSavedChoices() {
 
         slot.selectedCharacter = character;
         slot.classList.add("selected-cell");
+    });
 
-
-        for(const savedSpecial of data.special?? []) {
+    for(const savedSpecial of data.special?? []) {
             const cell = [...specialChoices.querySelectorAll(".selection-cell")].find(cell => {
                 const title = cell.parentElement.querySelector(".special-cell-title");
 
@@ -919,6 +916,7 @@ function loadSavedChoices() {
 
             if(!cell)
                 continue;
+
 
             if (savedSpecial.title === "Favorite Region") {
 
@@ -952,6 +950,23 @@ function loadSavedChoices() {
                 continue;
             };
 
+            if(savedSpecial.title === "Favorite Fatui") {
+                const character = fatui.find(
+                    character => character.name === savedSpecial.value
+                ) ?? savedSpecial.value;
+
+                displaySelection(
+                    cell,
+                    character,
+                    getCharacterImg
+                );
+
+                cell.selectedCharacter = character;
+                cell.classList.add("selected-cell");
+
+                continue;
+            }
+
             const character = characters.find(
                 character => character.name === savedSpecial.value
             );
@@ -968,7 +983,6 @@ function loadSavedChoices() {
             cell.selectedCharacter = character;
             cell.classList.add("selected-cell");
         }
-    });
 }
 
 
