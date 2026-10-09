@@ -381,6 +381,26 @@ function openSelectionModal(title, options, getImg, onSelect) {
 
         characterList.appendChild(optionElement);
     }
+    
+    // OPTION SUPPR PERSO
+    /*const optionElement = document.createElement("div");
+
+    const optionImg = document.createElement("img");
+    optionImg.classList.add("option-img", "option-no-img");
+    optionImg.alt = "No Option";
+    optionImg.src = "./img/UI/test.png";
+
+    optionElement.appendChild(optionImg);
+
+    optionElement.classList.add("character-option");
+        
+
+    optionElement.addEventListener("click", () => {
+        saveChoices();
+        closeSelectionModal();
+    })
+
+    characterList.appendChild(optionElement);*/
 
     modal.classList.remove("hidden");
 }

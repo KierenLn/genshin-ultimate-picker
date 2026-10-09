@@ -15,6 +15,11 @@ body {
     background-position: center;
 }
 
+footer {
+    margin-bottom: 30px;
+    align-items: center;
+}
+
 #main {
     min-width: 1400px;
     padding: 10px;
@@ -31,6 +36,8 @@ body {
     font-size: 18px;
     
     border-radius: 10px;
+
+    margin-right: 20px;
 
     height: 100px;
     width: 100px;
@@ -218,6 +225,10 @@ body {
     max-width: 150px;
     max-height: 150px;
     
+}
+.option-no-img {
+    min-width: 150px;
+    min-height: 150px;
 }
 
 .character-option:hover {
