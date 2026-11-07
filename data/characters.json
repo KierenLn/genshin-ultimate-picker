@@ -431,6 +431,12 @@
         "region": "Mondstadt"
     },
     {
+        "name": "Mitya",
+        "element": "Electro",
+        "weapon": "Catalyst",
+        "region": "Snezhnaya"
+    },
+    {
         "name": "Mona",
         "element": "Hydro",
         "weapon": "Catalyst",
@@ -614,6 +620,12 @@
         "name": "Traveler",
         "element": ["Anemo", "Geo", "Electro", "Dendro", "Hydro", "Pyro", "Cryo"],
         "weapon": "Sword"
+    },
+    {
+        "name": "Valeriy",
+        "element": "Electro",
+        "weapon": "Sword",
+        "region": "Snezhnaya"
     },
     {
         "name": "Varesa",
